@@ -7,6 +7,7 @@ ng_dir=$"$project_root_dir/ng"
 
 cd "$ng_dir"
 rm -rfv ./dist
+npm run build:sw
 npm run build:gh-pages
 
 

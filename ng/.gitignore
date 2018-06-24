@@ -42,3 +42,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Service Worker output
+src/sw.js
+src/sw.js.map

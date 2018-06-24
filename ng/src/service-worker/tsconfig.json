@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig.app.json",
+    "compilerOptions": {
+        "outFile": "../sw.js",
+        "module": "system"
+    },
+    "include": [
+        "**/*.ts"
+    ],
+    "exclude": []
+}

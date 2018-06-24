@@ -9,6 +9,7 @@
             "outDir": "dist",
             "assets": [
                 "assets",
+                "sw.js",
                 "site.webmanifest",
                 "browserconfig.xml",
                 "favicon.ico"
