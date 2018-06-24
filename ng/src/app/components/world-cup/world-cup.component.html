@@ -1,0 +1,28 @@
+<ng-container *ngIf="competition; else loading">
+
+    <h1 class="text-center">
+        <img src="assets/images/logo.svg" width="100" height="100" alt="Futbol Logo">
+    </h1>
+
+    <h1 class="display-4">
+        {{ competition.caption }}
+    </h1>
+    <p class="lead">{{ competition.numberOfTeams }} teams play {{ competition.numberOfGames }} games</p>
+    <hr class="my-4">
+
+    <h5>Match day {{ competition.currentMatchday }} of {{ competition.numberOfMatchdays }}</h5>
+
+
+    <!--<p class="lead">-->
+    <!--<a class="btn btn-primary btn-lg" role="button" routerLink="/foos">See foos</a>-->
+    <!--</p>-->
+</ng-container>
+
+<ng-template #loading>
+    <div class="text-center h1">
+        <i class="fa fa-futbol-o fa-spin text-primary"></i>
+    </div>
+    <div class="text-center h3">
+        LOADING
+    </div>
+</ng-template>

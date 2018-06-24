@@ -1,5 +1,5 @@
 {
-    "name": "mean-ts-ng",
+    "name": "futbol-ng",
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
@@ -7,6 +7,7 @@
         "start": "npm run ng -- serve --proxy-config proxy.conf.json",
         "build": "npm run ng -- build",
         "build:prod": "npm run ng -- build --prod --output-path \"../dist/public\"",
+        "build:gh-pages": "npm run ng -- build --prod --base-href /Futbol/",
         "test": "npm run ng -- test",
         "test:ci": "npm run test -- --watch false --code-coverage true",
         "lint": "npm run ng -- lint",
