@@ -1,15 +1,20 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "rootDir": "./src",
-        "outDir": "./dist",
-        "sourceMap": true,
-        "declaration": false,
-        "watch": true,
-        "module": "commonjs",
-        "target": "es2016",
-    },
-    "exclude": [
-        "./ng"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
     ]
+  }
 }
