@@ -3,19 +3,20 @@
         FUTB<i class="fa fa-futbol-o text-muted"></i>L
     </a>
 
-    <button class="navbar-toggler" type="button" (click)="collapse=!collapse" aria-label="Toggle navigation"
-            aria-controls="navbarSupportedContent" aria-expanded="false">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-label="Toggle navigation"
+            (click)="isMenuCollapsed = !isMenuCollapsed" [attr.aria-expanded]="!isMenuCollapsed">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse" id="navbarSupportedContent" [hidden]="collapse">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isMenuCollapsed">
         <ul class="navbar-nav mr-auto">
-            <!--<li class="nav-item">-->
-            <!--<a class="nav-link" href="/foos">-->
-            <!--<i class="fa fa-dashboard"></i>-->
-            <!--Foos-->
-            <!--</a>-->
-            <!--</li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.fifa.com" target="_blank">
+                    <i class="fa fa-external-link"></i>
+                    FIFA
+                </a>
+            </li>
         </ul>
         <span class="navbar-text">
 

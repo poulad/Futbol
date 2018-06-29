@@ -1,3 +1,8 @@
+<ng-container *ngIf="alerts?.length">
+    <div *ngFor="let alert of alerts">
+        <ngb-alert type="warning" (close)="closeAlert(alert)">{{ alert }}</ngb-alert>
+    </div>
+</ng-container>
 <app-navbar></app-navbar>
 <br>
 <div class="container">

@@ -9,7 +9,7 @@ import { RegistrationService } from '../../services/registration.service';
 export class NavbarComponent implements OnInit {
     areNotificationsGranted: boolean;
 
-    collapse = true;
+    isMenuCollapsed = true;
 
     constructor(private _regService: RegistrationService) {
     }

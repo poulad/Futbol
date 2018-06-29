@@ -6,25 +6,13 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RegistrationService {
-    // reg() {
-    //     navigator.serviceWorker.register('sw.js')
-    //         .then(function (reg) {
-    //             console.log('Service Worker Registered!', reg);
-    //
-    //             reg.pushManager.getSubscription().then(function (sub) {
-    //                 if (sub === null) {
-    //                     // Update UI to ask user to register for Push
-    //                     console.log('Not subscribed to push service!');
-    //                 } else {
-    //                     // We have a subscription, update the database
-    //                     console.log('Subscription object: ', sub);
-    //                 }
-    //             });
-    //         })
-    //         .catch(function (err) {
-    //             console.log('Service Worker registration failed: ', err);
-    //         });
-    // }
+    isNotificationSupported(): boolean {
+        return window['Notification'] && true;
+    }
+
+    isServiceWorkerSupported(): boolean {
+        return navigator['serviceWorker'] && true;
+    }
 
     isNotificationPermissionGranted(): boolean {
         const Notification = window['Notification'];
