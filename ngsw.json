@@ -9,7 +9,7 @@
       "urls": [
         "/Futbol/favicon.ico",
         "/Futbol/index.html",
-        "/Futbol/main.e327a0cdd47ef84c829d.js",
+        "/Futbol/main.34748afbbff41731184e.js",
         "/Futbol/polyfills.e3633a42d1123afc5fc9.js",
         "/Futbol/runtime.a66f828dca56eeb90e02.js",
         "/Futbol/styles.d768551118c9c5a3c159.css"
@@ -48,8 +48,8 @@
     "/Futbol/assets/icons/mstile-150x150.png": "95d9ceab5aab2f87fe0d27cd74286f77e204a389",
     "/Futbol/assets/icons/safari-pinned-tab.svg": "e11e88a2370c3f409c3a0b5402aab7f479aaf10f",
     "/Futbol/favicon.ico": "80aa6881dbebe352b9da1cbc6564793df6372ad4",
-    "/Futbol/index.html": "3a91e17f5ca18ab8f0076342b9f4b418ba14ed71",
-    "/Futbol/main.e327a0cdd47ef84c829d.js": "3a9019fd4df74f90dbc9f500ccfa9ee6bef60874",
+    "/Futbol/index.html": "f8eb3067cf96db0ebd365e0a4b92c77d279f9241",
+    "/Futbol/main.34748afbbff41731184e.js": "3a9019fd4df74f90dbc9f500ccfa9ee6bef60874",
     "/Futbol/polyfills.e3633a42d1123afc5fc9.js": "5261a4729f780dd900641be94bd321182959641a",
     "/Futbol/runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
     "/Futbol/styles.d768551118c9c5a3c159.css": "b1ae307eb684ee8b7bb6548a7e132eecc22b87ac"
