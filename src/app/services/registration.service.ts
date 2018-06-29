@@ -38,11 +38,12 @@ export class RegistrationService {
         if (!('serviceWorker' in navigator)) {
             return false;
         }
-
-        let swReg: ServiceWorkerRegistration;
-        swReg = await navigator.serviceWorker.getRegistration();
+        const swReg = await navigator.serviceWorker.getRegistration();
+        if (!swReg) {
+            return false;
+        }
         const subscription = await swReg.pushManager.getSubscription();
-        return subscription !== null;
+        return subscription && true;
     }
 
     async requestNotificationPermission(): Promise<boolean> {

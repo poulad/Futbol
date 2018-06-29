@@ -2,15 +2,16 @@
     <a class="navbar-brand" routerLink="">
         FUTB<i class="fa fa-futbol-o text-muted"></i>L
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler" type="button" (click)="collapse=!collapse" aria-label="Toggle navigation"
+            aria-controls="navbarSupportedContent" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-collapse" id="navbarSupportedContent" [hidden]="collapse">
         <ul class="navbar-nav mr-auto">
             <!--<li class="nav-item">-->
-            <!--<a class="nav-link" routerLink="/foos" routerLinkActive="active">-->
+            <!--<a class="nav-link" href="/foos">-->
             <!--<i class="fa fa-dashboard"></i>-->
             <!--Foos-->
             <!--</a>-->
@@ -18,12 +19,12 @@
         </ul>
         <span class="navbar-text">
 
-            <button *ngIf="areNotifsGranted === false" type="button" class="btn btn-success"
+            <button *ngIf="areNotificationsGranted === false" type="button" class="btn btn-success"
                     (click)="enableNotifications()">
                 <i class="fa fa-bell"></i> Enable
             </button>
 
-            <button *ngIf="areNotifsGranted === true" type="button" class="btn btn-secondary"
+            <button *ngIf="areNotificationsGranted === true" type="button" class="btn btn-secondary"
                     (click)="disableNotifications()">
                 <i class="fa fa-bell-slash"></i> Disable
             </button>

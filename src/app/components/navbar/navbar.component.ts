@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationService } from '../../services/registration.service';
-import { b } from '@angular/core/src/render3';
 
 @Component({
     selector: 'app-navbar',
@@ -8,7 +7,9 @@ import { b } from '@angular/core/src/render3';
     styles: []
 })
 export class NavbarComponent implements OnInit {
-    areNotifsGranted: boolean;
+    areNotificationsGranted: boolean;
+
+    collapse = true;
 
     constructor(private _regService: RegistrationService) {
     }
@@ -16,8 +17,22 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         this.getNotificationStatus()
             .then(status => {
-                this.areNotifsGranted = status;
+                this.areNotificationsGranted = status;
             });
+    }
+
+    async enableNotifications() {
+        this.areNotificationsGranted = await this._regService
+            .requestNotificationPermission();
+
+        if (this.areNotificationsGranted) {
+            await this._regService
+                .trySubscribePushNotifications();
+        }
+    }
+
+    disableNotifications() {
+        this.areNotificationsGranted = false;
     }
 
     private async getNotificationStatus(): Promise<boolean> {
@@ -26,19 +41,5 @@ export class NavbarComponent implements OnInit {
             &&
             (await this._regService.isPushSubscribed())
             ;
-    }
-
-    async enableNotifications() {
-        this.areNotifsGranted = await this._regService
-            .requestNotificationPermission();
-
-        if (this.areNotifsGranted) {
-            await this._regService
-                .trySubscribePushNotifications();
-        }
-    }
-
-    disableNotifications() {
-        this.areNotifsGranted = false;
     }
 }
