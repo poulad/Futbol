@@ -12,7 +12,7 @@ npm run build:gh-pages
 cd "$project_root_dir/../Futbol_gh-pages"
 rm -rfv ./*
 
-cp -rv "$project_root_dir/dist"/* .
+cp -rv "$project_root_dir/dist/futbol"/* .
 
 
 git add .

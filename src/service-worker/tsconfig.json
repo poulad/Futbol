@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "outDir": "",
+        "module": "system",
+        "outFile": "../../dist/futbol/sw.js",
+        "sourceMap": false
+    }
+}
