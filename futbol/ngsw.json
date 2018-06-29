@@ -1,0 +1,75 @@
+{
+  "configVersion": 1,
+  "index": "/Futbol/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/Futbol/favicon.ico",
+        "/Futbol/index.html",
+        "/Futbol/main.bafeb41de776cfebaaa3.js",
+        "/Futbol/polyfills.e3633a42d1123afc5fc9.js",
+        "/Futbol/runtime.a66f828dca56eeb90e02.js",
+        "/Futbol/styles.d768551118c9c5a3c159.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/Futbol/assets/icons/apple-touch-icon.png",
+        "/Futbol/assets/icons/favicon-16x16.png",
+        "/Futbol/assets/icons/favicon-32x32.png",
+        "/Futbol/assets/icons/icon-144x144.png",
+        "/Futbol/assets/icons/icon-152x152.png",
+        "/Futbol/assets/icons/icon-192x192.png",
+        "/Futbol/assets/icons/icon-70x70.png",
+        "/Futbol/assets/icons/logo.svg",
+        "/Futbol/assets/icons/mstile-150x150.png",
+        "/Futbol/assets/icons/safari-pinned-tab.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/Futbol/assets/icons/apple-touch-icon.png": "a2fb65b3207ce7d307dfa1db630eae3b572949eb",
+    "/Futbol/assets/icons/favicon-16x16.png": "e633a5313441f9887983c242231161d05ac27bf4",
+    "/Futbol/assets/icons/favicon-32x32.png": "285fd8d0ea2bd9c9a8751cf6fff39ae0e2c302c0",
+    "/Futbol/assets/icons/icon-144x144.png": "951c2de53d5f57db0e9a199bc651ee11d6313905",
+    "/Futbol/assets/icons/icon-152x152.png": "1f33d4e38691af474006139a933627af9b8b2a6e",
+    "/Futbol/assets/icons/icon-192x192.png": "301a97683dbd9702c45c4d04eae33fdbfc4b88cb",
+    "/Futbol/assets/icons/icon-70x70.png": "07ce342a72769b7536c5320571a6e632e1be2b33",
+    "/Futbol/assets/icons/logo.svg": "7f652a2efc87407bf6f14361a8e832c87b884fbc",
+    "/Futbol/assets/icons/mstile-150x150.png": "95d9ceab5aab2f87fe0d27cd74286f77e204a389",
+    "/Futbol/assets/icons/safari-pinned-tab.svg": "e11e88a2370c3f409c3a0b5402aab7f479aaf10f",
+    "/Futbol/favicon.ico": "80aa6881dbebe352b9da1cbc6564793df6372ad4",
+    "/Futbol/index.html": "953cc48220935528e1537ca15a7823ca11f183cc",
+    "/Futbol/main.bafeb41de776cfebaaa3.js": "97409e7a5aece5b201bd1c010f213dfb76671d69",
+    "/Futbol/polyfills.e3633a42d1123afc5fc9.js": "5261a4729f780dd900641be94bd321182959641a",
+    "/Futbol/runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
+    "/Futbol/styles.d768551118c9c5a3c159.css": "b1ae307eb684ee8b7bb6548a7e132eecc22b87ac"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*\\.[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    }
+  ]
+}
