@@ -10,7 +10,7 @@ namespace Futbol.Web
     {
         public IConfiguration Configuration { get; }
 
-        private const string NgSpaPathProduction = "ClientApp/dist/futbol";
+        private const string NgSpaPathProduction = "ClientApp/";
 
         public Startup(IConfiguration configuration)
         {

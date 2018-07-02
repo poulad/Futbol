@@ -26,7 +26,8 @@
         <Exec WorkingDirectory="$(SpaRoot)" Command="npm install"/>
     </Target>
 
-    <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- Build SPA app on publish only when BuildSpaOnPublish=true -->
+    <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish" Condition="'$(BuildSpaOnPublish)' == 'true'">
         <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
         <Exec WorkingDirectory="$(SpaRoot)" Command="npm install"/>
         <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:prod"/>

@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      # /deploy/
+      # deploy/ packages
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "deploy/package.json" }}
@@ -20,28 +20,41 @@ jobs:
           paths:
             - deploy/node_modules/
           key: v1-dependencies-{{ checksum "deploy/package.json" }}
-      # src/Client App/
+      # src/ClientApp/ packages
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "src/Client App/package.json" }}
+          - v1-dependencies-{{ checksum "src/ClientApp/package.json" }}
       - run:
           name: Restore npm dependencies for client app
           command: npm install
-          working_directory: src/Client App/
+          working_directory: src/ClientApp/
       - save_cache:
           paths:
             - src/Client App/node_modules/
-          key: v1-dependencies-{{ checksum "src/Client App/package.json" }}
-      # src/
+          key: v1-dependencies-{{ checksum "src/ClientApp/package.json" }}
+      # install dotnet sdk
+      - run:
+          name: Install .NET Core SDK
+          command: >
+             wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg &&
+             mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ &&
+             wget -q https://packages.microsoft.com/config/debian/9/prod.list  &&
+             mv prod.list /etc/apt/sources.list.d/microsoft-prod.list  &&
+             chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg  &&
+             chown root:root /etc/apt/sources.list.d/microsoft-prod.list  &&
+             apt update &&
+             apt-get install dotnet-sdk-2.1 &&
+             dotnet --info
+      # build
       - run:
           name: Build app
           command: npm run build
           working_directory: deploy/
       # dist/
-      - deploy:
-          name: Deploy app
-          command: npm run deploy
-          working_directory: deploy/
+    #   - deploy:
+    #       name: Deploy app
+    #       command: npm run deploy
+    #       working_directory: deploy/
     
 workflows:
   version: 2

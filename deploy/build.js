@@ -8,18 +8,36 @@ const srcDir = root + '/src';
 const distDir = root + '/dist';
 
 
-console.log('# Clearing dist directory...');
-$.rm('-rf', distDir);
-$.mkdir(distDir);
+function clear() {
+    console.log('# Clearing dist directory...');
+    $.rm('-rf', distDir);
+}
 
-console.log('# Building Angular app...');
-$.cd(`${root}/src/Client App/`);
-$.exec(`npm run build:prod -- --base-href /Futbol/ --output-path "${distDir}/ng/"`);
-console.log('# Building ASP.NET Core app...');
-const webApiDir = `${root}/src/Futbol.Web`;
-$.cd(webApiDir);
-$.exec(`
-    docker run --rm --volume "${webApiDir}:/app/" --workdir /app/ microsoft/dotnet:2.1-sdk \n
-    "dotnet publish --configuration Release --output bin/publish/"
-`);
-$.cp('-r', `${webApiDir}/bin/publish`, `${distDir}/aspnetcore`);
+function buildAspNetCoreApp() {
+    console.log('# Building ASP.NET Core app...');
+    $.exec(`dotnet publish --configuration Release --output "${distDir}/app/"`);
+}
+
+function buildAngularApp() {
+    console.log('# Building Angular app...');
+    const outputPath = `${distDir}/app/ClientApp/`;
+
+    $.cd(`${root}/src/ClientApp/`);
+    $.exec(`npm run build -- --prod --extract-css --base-href /Futbol/ --output-path "${outputPath}"`);
+
+    console.log('## Building service worker...');
+    $.cd(rootDir + '/src/service-worker/');
+    $.exec(`tsc --outFile "${outputPath}/sw.js"`);
+
+    console.log('## Combining service worker files...');
+    $.cd(rootDir + '/dist/futbol');
+    $.cat(`${outputPath}/ngsw-worker.js`, `${outputPath}/sw.js`).to(`${outputPath}/sw.js`);
+
+    console.log('## Removing unused service worker files...');
+    $.rm(`${outputPath}/ngsw-worker.js`, `${outputPath}/safety-worker.js`);
+}
+
+
+clear();
+buildAspNetCoreApp();
+buildAngularApp();
