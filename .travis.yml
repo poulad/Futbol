@@ -10,9 +10,6 @@ notifications:
 jobs:
   include:
 
-    - stage: Restore dependencies
-      script: cd deploy/ && npm install
-
     - stage: Build Apps
       script: >
         cd deploy/ &&

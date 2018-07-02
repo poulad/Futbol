@@ -14,11 +14,14 @@ function clear() {
 
 function buildAspNetCoreApp() {
     console.log('# Building ASP.NET Core app...');
-    $.cd(root);
-    $.exec(
-        `docker run --rm --volume "$PWD:/src" --volume "$PWD/dist/app:/app" --workdir /src microsoft/dotnet:2.1-sdk ` +
-        `dotnet publish --configuration Release --output /app/`
-    );
+
+    console.log('# Pulling .NET Core SDK image...');
+    $.exec('docker pull "microsoft/dotnet:2.1-sdk"');
+
+    console.log('# Publishing project...');
+    $.exec(`
+        docker run --rm --volume "${root}:/workspace" --volume "${root}/dist/app:/app" --workdir /workspace/src/Futbol.Web/ microsoft/dotnet:2.1-sdk dotnet publish --configuration Release --output /app/
+    `);
 }
 
 function buildAngularApp() {
