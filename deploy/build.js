@@ -20,16 +20,19 @@ function buildAspNetCoreApp() {
 
     console.log('# Publishing project...');
     $.exec(`
-        docker run --rm --volume "${root}:/workspace" --volume "${root}/dist/app:/app" --workdir /workspace/src/Futbol.Web/ microsoft/dotnet:2.1-sdk dotnet publish --configuration Release --output /app/
+        docker run --rm --volume "${root}/src/:/src" --volume "${root}/dist/app:/app" --workdir /src/Futbol.Web/ microsoft/dotnet:2.1-sdk dotnet publish --configuration Release --output /app/
     `);
 }
 
 function buildAngularApp() {
     console.log('# Building Angular app...');
     const outputPath = `${distDir}/app/ClientApp/`;
-
     $.cd(`${root}/src/ClientApp/`);
+
+    console.log('## Restoring Angular dependencies...');
     $.exec('npm install');
+
+    console.log('## Publishing Angular app...');
     $.exec(`npm run build -- --prod --extract-css --base-href /Futbol/ --output-path "${outputPath}"`);
 
     console.log('## Building service worker...');
