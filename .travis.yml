@@ -4,6 +4,9 @@ sudo: required
 services:
   - docker
 
+notifications:
+  email: false
+
 jobs:
   include:
 
@@ -15,11 +18,9 @@ jobs:
         cd deploy/ &&
         npm install &&
         node build.js
-    
-    #   script: ./test 2
 
-    # - stage: Deploy
-    #   script: ./deploy
+stages:
+  - Build Apps
+  - name: Deploy
+    if: branch = master
 
-notifications:
-  email: false
