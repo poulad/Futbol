@@ -22,7 +22,7 @@ function buildAspNetCoreApp() {
     $.exec(`
         docker run --rm --volume "${root}/src/:/src" --volume "${root}/dist/app:/app" --workdir /src/Futbol.Web/ microsoft/dotnet:2.1-sdk dotnet publish --configuration Release --output /app/
     `);
-    $.chmod('-R -v', 'a+rx', `${root}/dist/app`);
+    $.chmod('-Rv', 'a+rx', `${root}/dist/app`);
 }
 
 function buildAngularApp() {
