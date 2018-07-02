@@ -20,10 +20,10 @@ jobs:
           paths:
             - deploy/node_modules/
           key: v1-dependencies-{{ checksum "deploy/package.json" }}
+      # src/Client App/
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "src/Client App/package.json" }}
-      # src/Client App/
       - run:
           name: Restore npm dependencies for client app
           command: npm install
@@ -32,10 +32,12 @@ jobs:
           paths:
             - src/Client App/node_modules/
           key: v1-dependencies-{{ checksum "src/Client App/package.json" }}
+      # src/
       - run:
           name: Build app
           command: npm run build
           working_directory: deploy/
+      # dist/
       - deploy:
           name: Deploy app
           command: npm run deploy

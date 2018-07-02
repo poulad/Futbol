@@ -17,6 +17,9 @@ $.cd(`${root}/src/Client App/`);
 $.exec(`npm run build:prod -- --base-href /Futbol/ --output-path "${distDir}/ng/"`);
 
 console.log('# Building ASP.NET Core app...');
+$.cat('/etc/*release');
+$.exec('service docker restart');
+$.exec('docker info');
 const webApiDir = `${root}/src/Futbol.Web`;
 $.cd(webApiDir);
 $.exec(`
