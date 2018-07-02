@@ -1,0 +1,13 @@
+{
+  "name": "futbol",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node build.js",
+    "deploy": "node deploy.js"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/shelljs": "^0.8.0",
+    "shelljs": "^0.8.2"
+  }
+}

@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  web:
+    container_name: futbol_web
+    build:
+      context: ../dist/
+      dockerfile: ../deploy/web.Dockerfile
+    ports:
+      - '5000:80'
+    networks:
+      - futbol
+
+networks: 
+  futbol:
+    driver: bridge
