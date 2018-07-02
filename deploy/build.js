@@ -3,7 +3,6 @@ const path = require('path');
 
 $.config.fatal = true;
 const root = path.join(__dirname, '..');
-const srcDir = root + '/src';
 const distDir = root + '/dist';
 
 
@@ -51,3 +50,4 @@ function buildAngularApp() {
 clear();
 buildAspNetCoreApp();
 buildAngularApp();
+console.log(`# Build succeeded: "${distDir}/app"`);
