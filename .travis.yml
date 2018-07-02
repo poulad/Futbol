@@ -16,6 +16,13 @@ jobs:
         npm install &&
         node build.js
 
+    - stage: Deploy
+      script: >
+        cd deploy/ &&
+        npm install &&
+        node deploy.js
+
+
 stages:
   - Build Apps
   - name: Deploy

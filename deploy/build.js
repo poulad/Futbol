@@ -29,6 +29,7 @@ function buildAngularApp() {
     const outputPath = `${distDir}/app/ClientApp/`;
 
     $.cd(`${root}/src/ClientApp/`);
+    $.exec('npm install');
     $.exec(`npm run build -- --prod --extract-css --base-href /Futbol/ --output-path "${outputPath}"`);
 
     console.log('## Building service worker...');
