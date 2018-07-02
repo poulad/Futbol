@@ -57,7 +57,7 @@
                     "options": {
                         "browserTarget": "futbol:build",
                         "proxyConfig": "./proxy.conf.json",
-                        "ssl": true
+                        "ssl": false
                     },
                     "configurations": {
                         "production": {

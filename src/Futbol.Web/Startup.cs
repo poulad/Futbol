@@ -8,20 +8,23 @@ namespace Futbol.Web
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
+        private const string NgSpaPathProduction = "ClientApp/dist/futbol";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // In production, the Angular files will be served from this directory
+            services.AddSpaStaticFiles(config => { config.RootPath = NgSpaPathProduction; });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -30,11 +33,27 @@ namespace Futbol.Web
             }
             else
             {
+                app.UseExceptionHandler("/Error");
+                app.UseHttpsRedirection();
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
             app.UseMvc();
+
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                }
+                else
+                {
+                    spa.Options.SourcePath = NgSpaPathProduction;
+                }
+            });
         }
     }
 }
