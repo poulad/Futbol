@@ -1,0 +1,21 @@
+dist: trusty
+sudo: required
+
+services:
+  - docker
+
+jobs:
+  include:
+
+    - stage: Restore dependencies
+      script: cd deploy/ && npm install
+
+    - stage: Build Apps
+      script: node deploy/build-ng.js
+    #   script: ./test 2
+
+    # - stage: Deploy
+    #   script: ./deploy
+
+notifications:
+  email: false
