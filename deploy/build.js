@@ -31,6 +31,7 @@ function buildAngularApp() {
 
     console.log('## Restoring Angular dependencies...');
     $.exec('npm install');
+    $.exec('npm install --global typescript');
 
     console.log('## Publishing Angular app...');
     $.exec(`npm run build -- --prod --extract-css --base-href /Futbol/ --output-path "${outputPath}"`);
