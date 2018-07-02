@@ -3,29 +3,18 @@ const path = require('path');
 
 $.config.fatal = true;
 const root = path.join(__dirname, '..');
-const srcDir = root + '/src';
-const distDir = root + '/dist';
-
+const outputPath = `${distDir}/ng/`;
 
 function clear() {
     console.log('# Clearing dist directory...');
-    $.rm('-rf', distDir);
-}
-
-function buildAspNetCoreApp() {
-    console.log('# Building ASP.NET Core app...');
-    $.cd(root);
-    $.exec(`
-        docker run --rm --volume "$PWD:/src" --volume "$PWD/dist/app:/app" --workdir /src microsoft/dotnet:2.1-sdk
-        "dotnet publish --configuration Release --output /app/"
-    `);
+    $.rm('-rf', outputPath);
 }
 
 function buildAngularApp() {
     console.log('# Building Angular app...');
-    const outputPath = `${distDir}/app/ClientApp/`;
 
     $.cd(`${root}/src/ClientApp/`);
+    $.exec('npm install');
     $.exec(`npm run build -- --prod --extract-css --base-href /Futbol/ --output-path "${outputPath}"`);
 
     console.log('## Building service worker...');
@@ -42,5 +31,4 @@ function buildAngularApp() {
 
 
 clear();
-buildAspNetCoreApp();
 buildAngularApp();

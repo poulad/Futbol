@@ -11,7 +11,11 @@ jobs:
       script: cd deploy/ && npm install
 
     - stage: Build Apps
-      script: node deploy/build-ng.js
+      script: >
+        cd deploy/ &&
+        npm install &&
+        node deploy/build.js
+    
     #   script: ./test 2
 
     # - stage: Deploy
