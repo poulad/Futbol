@@ -37,7 +37,7 @@ function buildAngularApp() {
     $.exec(`npm run build -- --prod --extract-css --base-href /Futbol/ --output-path "${outputPath}"`);
 
     console.log('## Building service worker...');
-    $.cd(rootDir + '/src/service-worker/');
+    $.cd(`${root}/src/ClientApp/src/service-worker`);
     $.exec(`tsc --outFile "${outputPath}/sw.js"`);
 
     console.log('## Combining service worker files...');
