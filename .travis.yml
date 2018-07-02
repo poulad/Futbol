@@ -20,7 +20,8 @@ jobs:
       script: >
         cd deploy/ &&
         npm install &&
-        node deploy.js
+        echo DEPLOYING...
+        # node deploy.js
 
 
 stages:
