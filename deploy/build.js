@@ -10,6 +10,7 @@ const distDir = root + '/dist';
 function clear() {
     console.log('# Clearing dist directory...');
     $.rm('-rf', distDir);
+    $.mkdir('p', `${distDir}/app/ClientApp`);
 }
 
 function buildAspNetCoreApp() {
@@ -22,7 +23,6 @@ function buildAspNetCoreApp() {
     $.exec(`
         docker run --rm --volume "${root}/src/:/src" --volume "${root}/dist/app:/app" --workdir /src/Futbol.Web/ microsoft/dotnet:2.1-sdk dotnet publish --configuration Release --output /app/
     `);
-    $.chmod('-Rv', 'a+rx', `${root}/dist/app`);
 }
 
 function buildAngularApp() {
