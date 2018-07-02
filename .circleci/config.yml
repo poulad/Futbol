@@ -33,7 +33,7 @@ jobs:
             - src/Client App/node_modules/
           key: v1-dependencies-{{ checksum "src/Client App/package.json" }}
       - run:
-          name: Build client app
+          name: Build app
           command: npm run build
           working_directory: deploy/
       - deploy:

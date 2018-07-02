@@ -9,8 +9,19 @@ services:
       dockerfile: ../deploy/web.Dockerfile
     ports:
       - '5000:80'
+    depends_on:
+      - web_api
     networks:
       - futbol
+
+  web_api:
+    container_name: futbol_web_api
+    build:
+      context: ../dist/
+      dockerfile: ../deploy/web_api.Dockerfile
+    networks:
+      - futbol
+
 
 networks: 
   futbol:
