@@ -36,7 +36,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "src/Client App/package.json" }}
       - run:
           name: Build client app
           command: npm run build
