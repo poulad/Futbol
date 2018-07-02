@@ -10,7 +10,7 @@ const distDir = root + '/dist';
 function clear() {
     console.log('# Clearing dist directory...');
     $.rm('-rf', distDir);
-    $.mkdir('p', `${distDir}/app/ClientApp`);
+    $.mkdir('-p', `${distDir}/app/ClientApp`);
 }
 
 function buildAspNetCoreApp() {
@@ -41,7 +41,6 @@ function buildAngularApp() {
     $.exec(`tsc --outFile "${outputPath}/sw.js"`);
 
     console.log('## Combining service worker files...');
-    $.cd(rootDir + '/dist/futbol');
     $.cat(`${outputPath}/ngsw-worker.js`, `${outputPath}/sw.js`).to(`${outputPath}/sw.js`);
 
     console.log('## Removing unused service worker files...');
