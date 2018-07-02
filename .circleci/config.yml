@@ -2,25 +2,7 @@ version: 2
 
 jobs:
 
-  restore_deploy_scripts:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "deploy/package.json" }}
-      - run:
-          name: Restore npm dependencies for deployment scripts
-          command: npm install
-          working_directory: deploy/
-      - save_cache:
-          paths:
-            - deploy/node_modules/
-          key: v1-dependencies-{{ checksum "deploy/package.json" }}
-
-  build_client_app:
+  futbol:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
@@ -48,7 +30,7 @@ jobs:
           working_directory: src/Client App/
       - save_cache:
           paths:
-            - node_modules
+            - src/Client App/node_modules/
           key: v1-dependencies-{{ checksum "src/Client App/package.json" }}
       - run:
           name: Build client app
@@ -58,22 +40,10 @@ jobs:
           name: Deploy app
           command: npm run deploy
           working_directory: deploy/
-
-  deploy:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/repo
-    steps:
-      - deploy:
-          name: Deploy app
-          command: npm run deploy
-          working_directory: deploy/
-
+    
 workflows:
   version: 2
 
   Build:
     jobs:
-      - restore_deploy_scripts
-      - build_client_app
-      - deploy
+      - futbol
