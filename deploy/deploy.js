@@ -2,6 +2,7 @@ const $ = require('shelljs');
 const path = require('path');
 require('./logging');
 
+$.config.fatal = true;
 const deployDir = __dirname;
 const distDir = path.join(deployDir, '/../dist');
 
