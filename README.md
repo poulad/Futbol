@@ -1,5 +1,7 @@
 # Futbol
 
+[![Build Status](https://travis-ci.org/pouladpld/Futbol.svg?branch=master)](https://travis-ci.org/pouladpld/Futbol)
+
 A Progressive Web App with Angular and ASP.NET Core
 
 ## Getting Started
