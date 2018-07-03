@@ -1,4 +1,4 @@
 FROM microsoft/aspnetcore:2
-WORKDIR /app
-COPY aspnetcore .
+COPY app /app
+WORKDIR /app/
 ENTRYPOINT ["dotnet", "Futbol.Web.dll"]

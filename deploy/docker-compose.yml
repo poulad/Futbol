@@ -2,27 +2,17 @@ version: '2'
 
 services:
 
-  web:
-    container_name: futbol_web
-    build:
-      context: ../dist/
-      dockerfile: ../deploy/web.Dockerfile
-    ports:
-      - '5000:80'
-    depends_on:
-      - web_api
-    networks:
-      - futbol
-
-  web_api:
-    container_name: futbol_web_api
+  web_app:
+    container_name: futbol_web-app
     build:
       context: ../dist/
       dockerfile: ../deploy/web_api.Dockerfile
+    ports:
+      - '5000:80'
     networks:
       - futbol
 
 
-networks: 
+networks:
   futbol:
     driver: bridge
