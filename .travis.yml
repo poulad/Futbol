@@ -7,7 +7,8 @@ services:
   - docker
 install: >
   cd deploy/ &&
-  npm install
+  npm install &&
+  cd ..
 script: >
   node deploy/build.js &&
   node deploy/deploy.js
