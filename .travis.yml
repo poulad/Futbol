@@ -5,9 +5,9 @@ notifications:
 
 services:
   - docker
-
-script: >
+install: >
   cd deploy/ &&
-  npm install &&
-  node build.js &&
-  node deploy.js
+  npm install
+script: >
+  node deploy/build.js &&
+  node deploy/deploy.js
