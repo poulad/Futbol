@@ -1,11 +1,12 @@
 const $ = require('shelljs');
 const path = require('path');
+require('./logging');
 
 const deployDir = __dirname;
 const distDir = path.join(deployDir, '/../dist');
 
 function verifySettings() {
-    console.log('# Verifying settings...');
+    console.info('Verifying settings...');
     const script = require('./verify-settings');
     try {
         script.verifyDistDirectory();
@@ -13,23 +14,24 @@ function verifySettings() {
         script.verifyDockerConnection();
         script.verifyDockerCompose();
     } catch (e) {
-        console.error('## Settings are invalid!');
+        console.error('Settings are invalid!');
         console.error(e);
         process.exit(1);
     }
 }
 
 function pushContainers() {
-    console.log('# Pushing Docker Compose containers...');
+    console.info('Pushing Docker Compose containers...');
     const dcOptions = `--file ${deployDir}/docker-compose.yml --project-name futbol`;
 
-    console.log('## Removing previous containers...');
+    console.debug('Removing previous containers...');
     $.exec(`docker-compose ${dcOptions} rm -f`);
 
-    console.log('## Building containers...');
+    console.debug('Building containers...');
+    $.cp(`${deployDir}/Dockerfile`, distDir);
     $.exec(`docker-compose ${dcOptions} build --force-rm --no-cache`);
 
-    console.log('## Pushing new containers...');
+    console.debug('Pushing new containers...');
     $.exec(`docker-compose ${dcOptions} up -d`);
 }
 

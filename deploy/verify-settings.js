@@ -1,8 +1,8 @@
 const $ = require('shelljs');
 const fs = require('fs');
+require('./logging');
 
 const deployDir = __dirname;
-
 
 exports.verifyDistDirectory = function () {
     const path = `${deployDir}/../dist`;
@@ -12,31 +12,30 @@ exports.verifyDistDirectory = function () {
 }
 
 exports.verifyDockerSettings = function () {
-    const dockerSettings = process.env['DOCKER_SETTINGS_JSON'];
-    if (!(dockerSettings && dockerSettings.length)) {
-        throw 'Docker settings is not set.\n' +
-            '\tDOCKER_SETTINGS_JSON=\'{"host":"","ca":"","cert":"","key":""}\'';
+    const dockerSettingsValue = process.env['DOCKER_SETTINGS_JSON'];
+    if (!(dockerSettingsValue && dockerSettingsValue.length)) {
+        console.warn(
+            `Docker settings is not set. Skipping this check.\n` +
+            `\tDOCKER_SETTINGS_JSON='{"host":"my-hostname.org:2376","ca":"","cert":"","key":""}'`
+        );
+        return;
     }
-    let dockerSettingsJson;
+    let dockerSettings;
     try {
-        dockerSettingsJson = JSON.parse(dockerSettings)
+        dockerSettings = JSON.parse(dockerSettingsValue)
     } catch (e) {
-        throw 'Docker settings is not valid JSON. Valid format is:\n' +
-            '\tDOCKER_SETTINGS_JSON=\'{"host":"","ca":"","cert":"","key":""}\'';
+        throw `Docker settings is not valid JSON. Valid format is:\n` +
+            `\tDOCKER_SETTINGS_JSON='{"host":"my-hostname.org:2376","ca":"","cert":"","key":""}'`;
     }
     if (!(
-            dockerSettingsJson.host && dockerSettingsJson.host.length &&
-            dockerSettingsJson.ca && dockerSettingsJson.ca.length &&
-            dockerSettingsJson.cert && dockerSettingsJson.ca.length &&
-            dockerSettingsJson.key && dockerSettingsJson.key.length
+            dockerSettings.host && dockerSettings.host.length &&
+            dockerSettings.ca && dockerSettings.ca.length &&
+            dockerSettings.cert && dockerSettings.ca.length &&
+            dockerSettings.key && dockerSettings.key.length
         )) {
-        throw 'Docker settings is not valid JSON. Valid format is:\n' +
-            '\tDOCKER_SETTINGS_JSON=\'{"host":"","ca":"","cert":"","key":""}\'';
+        throw `Docker settings is not valid JSON. Valid format is:\n` +
+            `\tDOCKER_SETTINGS_JSON='{"host":"my-hostname.org:2376","ca":"","cert":"","key":""}'`;
     }
-}
-
-exports.verifyDockerConnection = function () {
-    const dockerSettings = JSON.parse(process.env['DOCKER_SETTINGS_JSON']);
 
     const dockerCertsDir = $.tempdir();
     fs.writeFileSync(`${dockerCertsDir}/ca.pem`, dockerSettings.ca);
@@ -46,7 +45,9 @@ exports.verifyDockerConnection = function () {
     process.env['DOCKER_HOST'] = dockerSettings.host;
     process.env['DOCKER_TLS_VERIFY'] = 1;
     process.env['DOCKER_CERT_PATH'] = dockerCertsDir;
+}
 
+exports.verifyDockerConnection = function () {
     if ($.exec(`docker version --format '{{.Server.Version}}'`).code !== 0) {
         throw 'Failed to connect to remote Docker daemon.';
     }
