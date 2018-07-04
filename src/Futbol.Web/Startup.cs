@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Futbol.Web.Options;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ namespace Futbol.Web
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(config => { config.RootPath = NgSpaPathProduction; });
+
+            services.Configure<VAPID>(Configuration.GetSection(nameof(VAPID)));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

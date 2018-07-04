@@ -1,15 +1,27 @@
-import { Component } from '@angular/core';
-import { RegistrationService } from './services/registration.service';
+import { Component, OnInit } from '@angular/core';
+import { AppNotificationService } from './services/app-notification.service';
+import { PushSubscriptionService } from './services/push-subscription.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     alerts: string[] = [];
 
-    constructor(private _regService: RegistrationService) {
+    constructor(
+        private _pushSubService: PushSubscriptionService,
+        private _regService: AppNotificationService
+    ) {
         this.detectFeatures();
+    }
+
+    ngOnInit() {
+        this._pushSubService
+            .trySubscribe()
+            .catch(e => {
+                this.alerts.push(e);
+            });
     }
 
     public closeAlert(alert) {

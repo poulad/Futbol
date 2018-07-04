@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Futbol.Web.Controllers
@@ -7,11 +9,13 @@ namespace Futbol.Web.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IEnumerable<int> Get()
         {
-            return new string[] { "value1", "value2" };
+            var rnd = new Random(DateTime.UtcNow.Millisecond);
+            return Enumerable
+                .Range(0, 10)
+                .Select(_ => rnd.Next(1000));
         }
 
         // GET api/values/5

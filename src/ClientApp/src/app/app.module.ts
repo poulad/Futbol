@@ -15,7 +15,8 @@ import { WorldCupComponent } from './components/world-cup/world-cup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CompetitionService } from './services/competition.service';
-import { RegistrationService } from './services/registration.service';
+import { AppNotificationService } from './services/app-notification.service';
+import { PushSubscriptionService } from './services/push-subscription.service';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -32,14 +33,15 @@ const routes: Routes = [
     ],
     imports: [
         BrowserModule,
-        ServiceWorkerModule.register('/Futbol/sw.js', {enabled: environment.production}),
+        ServiceWorkerModule.register('./sw.js'),
         RouterModule.forRoot(routes),
         HttpClientModule,
         FormsModule,
         NgbModule.forRoot()
     ],
     providers: [
-        RegistrationService,
+        AppNotificationService,
+        PushSubscriptionService,
         CompetitionService,
     ],
     bootstrap: [AppComponent]

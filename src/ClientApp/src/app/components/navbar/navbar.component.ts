@@ -1,45 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrationService } from '../../services/registration.service';
+import { AppNotificationService } from '../../services/app-notification.service';
+import { PushSubscriptionService } from '../../services/push-subscription.service';
 
 @Component({
     selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styles: []
+    templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
-    areNotificationsGranted: boolean;
+    isNotificationGranted: boolean;
 
     isMenuCollapsed = true;
 
-    constructor(private _regService: RegistrationService) {
+    constructor(
+        private _pushSubService: PushSubscriptionService,
+        private _notifService: AppNotificationService
+    ) {
     }
 
     ngOnInit() {
-        this.getNotificationStatus()
-            .then(status => {
-                this.areNotificationsGranted = status;
-            });
+        this.isNotificationGranted = this._notifService
+            .isNotificationPermissionGranted();
     }
 
     async enableNotifications() {
-        this.areNotificationsGranted = await this._regService
+        this.isNotificationGranted = await this._notifService
             .requestNotificationPermission();
 
-        if (this.areNotificationsGranted) {
-            await this._regService
-                .trySubscribePushNotifications();
+        if (!this.isNotificationGranted) {
+            return;
+        }
+
+        try {
+            await this._pushSubService.trySubscribe();
+        } catch (e) {
+            console.warn(e);
         }
     }
 
     disableNotifications() {
-        this.areNotificationsGranted = false;
-    }
-
-    private async getNotificationStatus(): Promise<boolean> {
-        return this._regService
-                .isNotificationPermissionGranted()
-            &&
-            (await this._regService.isPushSubscribed())
-            ;
+        this.isNotificationGranted = false;
     }
 }
