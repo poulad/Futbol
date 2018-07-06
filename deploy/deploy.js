@@ -21,6 +21,18 @@ function verifySettings() {
     }
 }
 
+function tryReadAppSettings() {
+    console.info('Reading app settings...');
+    const script = require('./verify-settings');
+    try {
+        script.verifyAppSettings(`${distDir}/app/appsettings.Production.json`);
+    } catch (e) {
+        console.error('App settings are invalid!');
+        console.error(e);
+        process.exit(1);
+    }
+}
+
 function pushContainers() {
     console.info('Pushing Docker Compose containers...');
     const dcOptions = `--file ${deployDir}/docker-compose.yml --project-name futbol`;
@@ -37,4 +49,5 @@ function pushContainers() {
 }
 
 verifySettings();
+tryReadAppSettings();
 pushContainers();

@@ -65,3 +65,21 @@ exports.verifyDockerCompose = function () {
         throw `"${filePath}" is invalid.`;
     }
 }
+
+exports.verifyAppSettings = function (settingsFile) {
+    const appSettingsValue = process.env['APP_SETTINGS_JSON'];
+    if (!(appSettingsValue && appSettingsValue.length)) {
+        console.warn(`App settings is not set. Skipping this check.`);
+        return null;
+    }
+    let appSettings;
+    try {
+        appSettings = JSON.parse(appSettingsValue)
+    } catch (e) {
+        throw `App settings is not valid JSON.`;
+    }
+
+    fs.writeFileSync(settingsFile, JSON.stringify(appSettings));
+
+    return appSettings;
+}
