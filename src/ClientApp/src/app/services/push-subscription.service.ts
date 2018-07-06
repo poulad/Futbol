@@ -28,7 +28,12 @@ export class PushSubscriptionService {
 
         const swReg: ServiceWorkerRegistration = await sw.ready;
 
-        let subscription = await swReg.pushManager.getSubscription();
+        const pushManager: PushManager = swReg['pushManager'];
+        if (!pushManager) {
+            throw new Error('Push notifications are not supported in your browser.');
+        }
+
+        let subscription = await pushManager.getSubscription();
         if (subscription) {
             return subscription;
         }
@@ -38,7 +43,7 @@ export class PushSubscriptionService {
             applicationServerKey: urlBase64ToUint8Array2(environment.vapid)
         };
         try {
-            subscription = await swReg.pushManager.subscribe(opts);
+            subscription = await pushManager.subscribe(opts);
         } catch (e) {
             throw new Error('Unable to subscribe to push notifications. ' + e);
         }
