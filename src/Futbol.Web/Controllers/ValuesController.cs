@@ -1,7 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
+using Futbol.Web.Data;
+using Futbol.Web.Options;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using WebPush;
 
 namespace Futbol.Web.Controllers
 {
@@ -9,38 +15,68 @@ namespace Futbol.Web.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly FutbolContext _dbContext;
+
+        private readonly ILogger<ValuesController> _logger;
+
+        private readonly VapidDetails _vapidDetails;
+
+        public ValuesController(
+            IOptions<VAPID> vapidOptions,
+            FutbolContext dbContext,
+            ILogger<ValuesController> logger
+        )
+        {
+            _dbContext = dbContext;
+            _logger = logger;
+            _vapidDetails = new VapidDetails(
+                vapidOptions.Value.Subject,
+                vapidOptions.Value.PublicKey,
+                vapidOptions.Value.PrivateKey
+            );
+        }
+
         [HttpGet]
-        public IEnumerable<int> Get()
+        public async Task<IActionResult> Get()
         {
-            var rnd = new Random(DateTime.UtcNow.Millisecond);
-            return Enumerable
-                .Range(0, 10)
-                .Select(_ => rnd.Next(1000));
-        }
+            var subscriptions = await _dbContext.PushSubscriptions.ToArrayAsync();
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
+            var webPushClient = new WebPushClient();
+            string payload = JsonConvert.SerializeObject(new
+            {
+                version = "v1",
+                data = "Sample data",
+            });
+            foreach (var sub in subscriptions)
+            {
+                if (string.IsNullOrWhiteSpace(sub.Data))
+                {
+                    continue;
+                }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+                dynamic jsonObj = JsonConvert.DeserializeObject(sub.Data);
+                string pushEndpoint = (string) jsonObj.endpoint;
+                string p256dh = (string) jsonObj.keys?.p256dh;
+                string auth = (string) jsonObj.keys?.auth;
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+                if (string.IsNullOrWhiteSpace(auth))
+                {
+                    continue;
+                }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                try
+                {
+                    var subscription = new WebPush.PushSubscription(pushEndpoint, p256dh, auth);
+
+                    await webPushClient.SendNotificationAsync(subscription, payload, _vapidDetails);
+                }
+                catch (WebPushException exception)
+                {
+                    Console.WriteLine("Http STATUS code" + exception.StatusCode);
+                }
+            }
+
+            return Ok();
         }
     }
 }

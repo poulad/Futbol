@@ -30,7 +30,9 @@
                             "node_modules/font-awesome/css/font-awesome.min.css",
                             "src/styles.css"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/fingerprintjs2/dist/fingerprint2.min.js"
+                        ]
                     },
                     "configurations": {
                         "production": {

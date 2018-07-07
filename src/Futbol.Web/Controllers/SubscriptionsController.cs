@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Threading.Tasks;
+using Futbol.Web.Data;
 using Futbol.Web.Options;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using WebPush;
+using PushSubscription = WebPush.PushSubscription;
 
 namespace Futbol.Web.Controllers
 {
@@ -13,30 +15,42 @@ namespace Futbol.Web.Controllers
     [ApiController]
     public class SubscriptionsController : ControllerBase
     {
+        private readonly FutbolContext _dbContext;
+
         private readonly VapidDetails _vapidDetails;
 
-        public SubscriptionsController(IOptions<VAPID> vapidOptions)
+        public SubscriptionsController(IOptions<VAPID> vapidOptions, FutbolContext dbContext)
         {
             _vapidDetails = new VapidDetails(
                 vapidOptions.Value.Subject,
                 vapidOptions.Value.PublicKey,
                 vapidOptions.Value.PrivateKey
             );
+            _dbContext = dbContext;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] JObject body)
         {
-            dynamic json = body;
-            string pushEndpoint = (string) json.endpoint;
-            string p256dh = (string) json.keys?.p256dh;
-            string auth = (string) json.keys?.auth;
+            dynamic jsonObj = body;
+            string pushEndpoint = (string) jsonObj.endpoint;
+            string p256dh = (string) jsonObj.keys?.p256dh;
+            string auth = (string) jsonObj.keys?.auth;
 
             string payload = JsonConvert.SerializeObject(new
             {
                 version = "v1",
                 data = "Sample data",
             });
+
+            string json = body.ToString();
+
+            await _dbContext.PushSubscriptions.AddAsync(new Data.PushSubscription
+            {
+                Data = json,
+            });
+
+            await _dbContext.SaveChangesAsync();
 
             var webPushClient = new WebPushClient();
             try

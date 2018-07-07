@@ -1,9 +1,14 @@
-﻿using Futbol.Web.Options;
+﻿using System;
+using System.Threading.Tasks;
+using Futbol.Web.Data;
+using Futbol.Web.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Futbol.Web
 {
@@ -20,6 +25,12 @@ namespace Futbol.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("FutbolContext");
+            services.AddEntityFrameworkNpgsql()
+                .AddDbContext<FutbolContext>(options =>
+                    options.UseNpgsql(connectionString)
+                );
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -28,7 +39,7 @@ namespace Futbol.Web
             services.Configure<VAPID>(Configuration.GetSection(nameof(VAPID)));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
@@ -57,6 +68,22 @@ namespace Futbol.Web
                     spa.Options.SourcePath = NgSpaPathProduction;
                 }
             });
+
+            var databaseInitializer =
+                new DatabaseInitializer(app.ApplicationServices.CreateScope().ServiceProvider
+                    .GetRequiredService<FutbolContext>());
+
+            try
+            {
+                databaseInitializer.InitializeAsync()
+                    .GetAwaiter()
+                    .GetResult()
+                    ;
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "Failed to initialize database.");
+            }
         }
     }
 }
