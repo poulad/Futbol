@@ -34,7 +34,7 @@ sw.addEventListener('notificationclick', evt => {
     }
 
     evt.waitUntil(
-        this.clients.openWindow(`${evt.target.location.origin}/teams/a`)
+        this.clients.openWindow(`${evt.target.location}/teams/a`)
     );
 });
 
