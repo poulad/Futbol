@@ -38,7 +38,7 @@ function buildAngularApp() {
 
     console.debug('Building service worker...');
     $.cd(`${root}/src/ClientApp`);
-    $.exec(`node node_modules/typescript/bin/tsc --project "${root}/src/ClientApp/src/service-worker/" --outFile "${outputPath}/sw.js"`);
+    $.exec(`node node_modules/typescript/bin/tsc --project "${root}/src/ClientApp/src/tsconfig.sw.json" --outDir "${outputPath}"`);
 
     console.debug('Combining service worker files...');
     $.cat(`${outputPath}/ngsw-worker.js`, `${outputPath}/sw.js`).to(`${outputPath}/sw.js`);
