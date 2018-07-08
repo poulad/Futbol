@@ -8,6 +8,6 @@
     "exclude": [
         "src/test.ts",
         "**/*.spec.ts",
-        "service-worker/"
+        "./sw.ts"
     ]
 }

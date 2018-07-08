@@ -11,3 +11,15 @@ A Progressive Web App with Angular and ASP.NET Core
 1. `npm start`
 1. `dotnet run`
 1. http://localhost:5000
+
+### Database
+
+Using Docker
+
+```bash
+docker run --detach --publish 5432:5432 --name futbol-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_USER=futbol -e POSTGRES_DB=futbol postgres:10
+
+# docker stop futbol-postgres
+# docker start futbol-postgres
+# docker rm --volumes --force futbol-postgres
+```

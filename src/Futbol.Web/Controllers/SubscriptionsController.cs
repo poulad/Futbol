@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Threading.Tasks;
 using Futbol.Web.Data;
+using Futbol.Web.Models;
 using Futbol.Web.Options;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -37,10 +38,13 @@ namespace Futbol.Web.Controllers
             string p256dh = (string) jsonObj.keys?.p256dh;
             string auth = (string) jsonObj.keys?.auth;
 
-            string payload = JsonConvert.SerializeObject(new
+            string payload = JsonConvert.SerializeObject(new PushNotification
             {
-                version = "v1",
-                data = "Sample data",
+                Title = "Nice! You are subscribed for push notifications.",
+                Options = new PushNotificationOptions
+                {
+                    Icon = "favicon.ico",
+                }
             });
 
             string json = body.ToString();

@@ -7,8 +7,11 @@ namespace Futbol.Web.Data
     {
         public string Id { get; set; }
 
-        [Column(TypeName = "JSON")] public string Agents { get; set; }
+        [Column(TypeName = "JSON")]
+        public string Agents { get; set; }
 
-        [Required] [Column(TypeName = "JSON")] public string Data { get; set; }
+        [Required]
+        [Column(TypeName = "JSON")]
+        public string Data { get; set; }
     }
 }

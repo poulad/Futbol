@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Futbol.Web.Data;
+using Futbol.Web.Jobs;
 using Futbol.Web.Options;
+using Hangfire;
+using Hangfire.PostgreSql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +32,9 @@ namespace Futbol.Web
                 .AddDbContext<FutbolContext>(options =>
                     options.UseNpgsql(connectionString)
                 );
+
+            services.AddHangfire(config => { config.UsePostgreSqlStorage(connectionString); });
+            services.AddTransient<PushNotificationJob>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -69,18 +74,17 @@ namespace Futbol.Web
                 }
             });
 
+            app.UseHangfireServer();
+            app.ScheduleJobs();
+
             try
             {
-                var dbContext = app.ApplicationServices.CreateScope().ServiceProvider
-                    .GetRequiredService<FutbolContext>();
-                var databaseInitializer = new DatabaseInitializer(dbContext);
-                databaseInitializer.InitializeAsync()
-                    .GetAwaiter()
-                    .GetResult();
+                app.InitializeDatabase();
             }
             catch (Exception e)
             {
                 logger.LogError(e, "Failed to initialize database.");
+                throw;
             }
         }
     }

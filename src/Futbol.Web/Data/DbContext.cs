@@ -6,6 +6,8 @@ namespace Futbol.Web.Data
     {
         public DbSet<PushSubscription> PushSubscriptions { get; set; }
 
+        public DbSet<Team> Teams { get; set; }
+
         public FutbolContext(DbContextOptions<FutbolContext> options)
             : base(options)
         {

@@ -2,15 +2,17 @@
 using Futbol.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Futbol.Web.Migrations
 {
     [DbContext(typeof(FutbolContext))]
-    partial class FutbolContextModelSnapshot : ModelSnapshot
+    [Migration("20180708142244_EditTeam")]
+    partial class EditTeam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

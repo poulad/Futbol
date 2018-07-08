@@ -5,8 +5,8 @@ const root = __dirname;
 const outputPath = `${root}/dist/futbol`;
 
 console.log('# Building service worker...');
-$.cd(root + '/src/service-worker/');
-$.exec(`node ${root}/node_modules/typescript/bin/tsc --project "${root}/src/service-worker/" --outFile "${outputPath}/sw.js"`);
+$.cd(`${root}/src`);
+$.exec(`node ${root}/node_modules/typescript/bin/tsc --project "${root}/src/tsconfig.sw.json" --outDir "${outputPath}"`);
 
 console.log('## Combining service worker files...');
 $.cat(`${outputPath}/ngsw-worker.js`, `${outputPath}/sw.js`).to(`${outputPath}/sw.js`);
