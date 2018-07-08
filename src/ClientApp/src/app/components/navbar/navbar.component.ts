@@ -8,7 +8,7 @@ import { PushSubscriptionService } from '../../services/push-subscription.servic
 })
 export class NavbarComponent implements OnInit {
     isNotificationGranted: boolean;
-
+    isChangingNotificationState = false;
     isMenuCollapsed = true;
 
     constructor(
@@ -23,10 +23,13 @@ export class NavbarComponent implements OnInit {
     }
 
     async enableNotifications() {
+        this.isChangingNotificationState = true;
+
         this.isNotificationGranted = await this._notifService
             .requestNotificationPermission();
 
         if (!this.isNotificationGranted) {
+            this.isChangingNotificationState = false;
             return;
         }
 
@@ -35,9 +38,18 @@ export class NavbarComponent implements OnInit {
         } catch (e) {
             console.warn(e);
         }
+        this.isChangingNotificationState = false;
     }
 
-    disableNotifications() {
+    async disableNotifications() {
+        this.isChangingNotificationState = true;
+
+        try {
+            await this._pushSubService.tryUnsubscribe();
+        } catch (e) {
+            console.warn(e);
+        }
         this.isNotificationGranted = false;
+        this.isChangingNotificationState = false;
     }
 }

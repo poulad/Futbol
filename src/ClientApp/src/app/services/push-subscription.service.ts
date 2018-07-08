@@ -11,9 +11,14 @@ export class PushSubscriptionService {
     ) {
     }
 
-    registerEndpoint(subscription) {
+    registerEndpoint(subscription: PushSubscription) {
         return this._http
             .post('api/subscriptions', subscription);
+    }
+
+    unregisterSubscription(subscription: PushSubscription) {
+        return this._http
+            .post('api/unsubscribe', subscription);
     }
 
     async trySubscribe(): Promise<any> {
@@ -59,6 +64,38 @@ export class PushSubscriptionService {
         }
 
         return subscription;
+    }
+
+    async tryUnsubscribe(): Promise<void> {
+        const sw = navigator['serviceWorker'] as ServiceWorkerContainer;
+        if (!(sw)) {
+            throw new Error('Service Worker is not supported in your browser.');
+        }
+
+        const swReg: ServiceWorkerRegistration = await sw.ready;
+
+        const pushManager: PushManager = swReg['pushManager'];
+        if (!pushManager) {
+            throw new Error('Push notifications are not supported in your browser.');
+        }
+
+        const subscription = await pushManager.getSubscription();
+        if (!subscription) {
+            return;
+        }
+
+        try {
+            await subscription.unsubscribe();
+        } catch (e) {
+            throw new Error('Unable to unsubscribe.' + e);
+        }
+
+        const subscriptionObject = JSON.parse(JSON.stringify(subscription));
+        try {
+            await this.unregisterSubscription(subscriptionObject).toPromise();
+        } catch (e) {
+            throw new Error('Unable to unregister subscription on the backend.' + e);
+        }
     }
 }
 
