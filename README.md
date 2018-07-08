@@ -43,3 +43,12 @@ docker run --name futbol-postgres --detach --publish 5432:5432 -e POSTGRES_PASSW
 # docker start futbol-postgres
 # docker rm --volumes --force futbol-postgres
 ```
+
+## Deployment
+
+### Clean up
+
+```bash
+docker rm -fv futbol_web-app futbol_postgres
+sudo rm -rfv /var/futbol/
+```

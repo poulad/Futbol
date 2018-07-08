@@ -69,8 +69,7 @@ exports.verifyDockerCompose = function () {
 exports.verifyAppSettings = function (settingsFile) {
     const appSettingsValue = process.env['APP_SETTINGS_JSON'];
     if (!(appSettingsValue && appSettingsValue.length)) {
-        console.warn(`App settings is not set. Skipping this check.`);
-        return null;
+        throw `App settings environment variable is not set.\n\tAPP_SETTINGS_JSON='{}'`;
     }
     let appSettings;
     try {
