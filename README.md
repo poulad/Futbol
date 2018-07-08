@@ -6,18 +6,38 @@ A Progressive Web App with Angular and ASP.NET Core
 
 ## Getting Started
 
-<!-- 1. Install self-signed certificate. try [this article](https://www.humankode.com/asp-net-core/develop-locally-with-https-self-signed-certificates-and-asp-net-core) -->
 1. Install NodeJS and APS.NET Core 2.1+
-1. `npm start`
-1. `dotnet run`
-1. http://localhost:5000
+    ```bash
+    # check .NET Core installation
+    dotnet --info
 
-### Database
+    # check Angular CLI installation
+    ng --version
+    ```
+1. Run an instance of Postgres database.
+    ```bash
+    # if using Docker, try this command
+    docker run --name futbol-postgres --detach --publish 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=futbol -e POSTGRES_DB=futbol postgres:10
+    ```
+1. Start Angular app
+    ```bash
+    cd src/ClientApp/
+    npm instal
+    npm start
+    ```
+1. Start ASP.NET Core app
+    ```bash
+    cd src/Futbol.Web/
+    dotnet run
+    ```
+1. hit [http://localhost:5000](http://localhost:5000) in your browser.
+
+## Database
 
 Using Docker
 
 ```bash
-docker run --detach --publish 5432:5432 --name futbol-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_USER=futbol -e POSTGRES_DB=futbol postgres:10
+docker run --name futbol-postgres --detach --publish 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=futbol -e POSTGRES_DB=futbol postgres:10
 
 # docker stop futbol-postgres
 # docker start futbol-postgres
