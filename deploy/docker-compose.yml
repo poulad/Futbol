@@ -22,7 +22,7 @@ services:
     volumes:
       - '/var/futbol/postgres:/var/lib/postgresql/data'
     environment:
-      - POSTGRES_DB=fubol
+      - POSTGRES_DB=futbol
       - POSTGRES_USER=futbol
       - POSTGRES_PASSWORD=password
     networks:
