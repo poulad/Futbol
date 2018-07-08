@@ -69,16 +69,14 @@ namespace Futbol.Web
                 }
             });
 
-            var databaseInitializer =
-                new DatabaseInitializer(app.ApplicationServices.CreateScope().ServiceProvider
-                    .GetRequiredService<FutbolContext>());
-
             try
             {
+                var dbContext = app.ApplicationServices.CreateScope().ServiceProvider
+                    .GetRequiredService<FutbolContext>();
+                var databaseInitializer = new DatabaseInitializer(dbContext);
                 databaseInitializer.InitializeAsync()
                     .GetAwaiter()
-                    .GetResult()
-                    ;
+                    .GetResult();
             }
             catch (Exception e)
             {
