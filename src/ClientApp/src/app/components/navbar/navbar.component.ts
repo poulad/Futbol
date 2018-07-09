@@ -25,17 +25,19 @@ export class NavbarComponent implements OnInit {
     async enableNotifications() {
         this.isChangingNotificationState = true;
 
-        this.isNotificationGranted = await this._notifService
+        const isPermissionGranted = await this._notifService
             .requestNotificationPermission();
 
-        if (!this.isNotificationGranted) {
+        if (!isPermissionGranted) {
             this.isChangingNotificationState = false;
             return;
         }
 
         try {
             await this._pushSubService.trySubscribe();
+            this.isNotificationGranted = true;
         } catch (e) {
+            this.isNotificationGranted = false;
             console.warn(e);
         }
         this.isChangingNotificationState = false;

@@ -30,8 +30,29 @@
       <file leaf-file-name="navbar.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-528">
-              <caret line="14" column="53" lean-forward="true" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+            <state relative-caret-position="312">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="439">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -48,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="push-subscription.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="push-subscription.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/push-subscription.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="367">
+              <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -60,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="navbar.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+            <state relative-caret-position="535">
+              <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -90,18 +111,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="team.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/team.service.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -110,15 +119,6 @@
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="team.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/components/team/team.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -150,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/app/services/app-notification.service.ts" />
         <option value="$PROJECT_DIR$/src/app/models/push-subscription.ts" />
         <option value="$PROJECT_DIR$/angular.json" />
-        <option value="$PROJECT_DIR$/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/service-worker/PushNotification.ts" />
         <option value="$PROJECT_DIR$/src/service-worker/sw.ts" />
@@ -167,9 +166,10 @@
         <option value="$PROJECT_DIR$/src/app/services/team.service.ts" />
         <option value="$PROJECT_DIR$/src/tsconfig.app.json" />
         <option value="$PROJECT_DIR$/src/sw.ts" />
-        <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.html" />
-        <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts" />
         <option value="$PROJECT_DIR$/src/app/services/push-subscription.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.html" />
       </list>
     </option>
   </component>
@@ -343,19 +343,19 @@
       <workItem from="1530934690564" duration="5782000" />
       <workItem from="1531051840326" duration="4153000" />
       <workItem from="1531066034663" duration="7798000" />
-      <workItem from="1531090644184" duration="2367000" />
+      <workItem from="1531090644184" duration="2953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38918000" />
+    <option name="totallyTimeSpent" value="39504000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="0" width="1864" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49894738" visible="true" weight="0.1890277" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49894738" visible="true" weight="0.1890277" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -365,7 +365,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" sideWeight="0.5010526" side_tool="true" weight="0.1890277" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3831579" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3831579" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -596,16 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/app-notification.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
@@ -623,13 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="4794" column="10" selection-start-line="4794" selection-start-column="10" selection-end-line="4794" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -709,30 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sw.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-528">
-          <caret line="14" column="53" lean-forward="true" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/models/push-subscription.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -742,11 +701,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/push-subscription.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        <state relative-caret-position="367">
+          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sw.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="49" />
         </state>
       </provider>
     </entry>

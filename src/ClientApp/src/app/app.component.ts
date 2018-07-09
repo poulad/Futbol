@@ -17,11 +17,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._pushSubService
-            .trySubscribe()
-            .catch(e => {
-                this.alerts.push(e);
-            });
     }
 
     public closeAlert(alert) {
