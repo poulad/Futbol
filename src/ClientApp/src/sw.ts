@@ -24,18 +24,15 @@ sw.addEventListener('push', evt => {
 });
 
 sw.addEventListener('notificationclick', evt => {
-    console.log('Notification is clicked');
-    console.log(evt);
-    console.log(evt.notification);
-
     const notif: Notification = evt.notification;
+    notif.close();
     if (notif.tag === 'TEAMS') {
         notif.close();
     }
 
     const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
     evt.waitUntil(
-        this.clients.openWindow(`${baseUrl}/teams/a`)
+        this.clients.openWindow(`${baseUrl}/teams/brazil`)
     );
 });
 

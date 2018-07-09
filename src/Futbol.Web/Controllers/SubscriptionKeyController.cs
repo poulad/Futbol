@@ -1,14 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading.Tasks;
-using Futbol.Web.Data;
-using Futbol.Web.Models;
 using Futbol.Web.Options;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using WebPush;
-using PushSubscription = WebPush.PushSubscription;
 
 namespace Futbol.Web.Controllers
 {

@@ -110,7 +110,7 @@ namespace Futbol.Web.Jobs
                 .Select(t => new PushNotificationAction
                 {
                     Title = t.Name,
-                    Icon = t.CrestUrl,
+                    Icon = "assets/images/wc.png",
                     Action = $"TEAM:{t.Code}"
                 })
                 .ToArray();
@@ -121,7 +121,7 @@ namespace Futbol.Web.Jobs
                 Options = new PushNotificationOptions
                 {
                     Body = "Checkout these teams in ⚽ WC 2018 ⚽",
-                    Icon = "assets/icons/logo.svg",
+                    Icon = "favicon.ico",
                     Actions = actions,
                     Tag = "TEAMS",
                     RequireInteraction = true,
