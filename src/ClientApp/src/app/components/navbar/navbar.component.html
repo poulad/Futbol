@@ -20,13 +20,13 @@
         </ul>
         <span class="navbar-text">
 
-            <button *ngIf="isNotificationGranted === false" type="button" class="btn btn-success"
+            <button *ngIf="isSubscribedForNotifications === false" type="button" class="btn btn-success"
                     [disabled]="isChangingNotificationState"
                     (click)="enableNotifications()">
                 <i class="fa fa-bell"></i> Enable
             </button>
 
-            <button *ngIf="isNotificationGranted === true" type="button" class="btn btn-secondary"
+            <button *ngIf="isSubscribedForNotifications === true" type="button" class="btn btn-secondary"
                     [disabled]="isChangingNotificationState"
                     (click)="disableNotifications()">
                 <i class="fa fa-bell-slash"></i> Disable

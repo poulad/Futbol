@@ -14,5 +14,6 @@ $.cat(`${outputPath}/ngsw-worker.js`, `${outputPath}/sw.js`).to(`${outputPath}/s
 console.log('## Removing unused service worker files...');
 $.rm(`${outputPath}/ngsw-worker.js`, `${outputPath}/safety-worker.js`);
 
-console.log('## Copying service worker file for dev mode...');
+console.log('## Copying service worker files for dev mode...');
 $.cp(`${outputPath}/sw.js`, `${root}/src/sw.js`);
+$.cp(`${outputPath}/ngsw.json`, `${root}/src/ngsw.json`);

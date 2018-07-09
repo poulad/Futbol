@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sw.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sw.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sw.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="295">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -30,41 +30,13 @@
       <file leaf-file-name="navbar.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="334">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
+                <element signature="n#!!block;n#enableNotifications#0;n#NavbarComponent#0" />
+                <element signature="n#!!block;n#disableNotifications#0;n#NavbarComponent#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="push-subscription.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/models/push-subscription.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -73,51 +45,11 @@
         <entry file="file://$PROJECT_DIR$/src/app/services/push-subscription.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="367">
-              <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
+              <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tsconfig.app.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tsconfig.app.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="team.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/components/team/team.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="team.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/team.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="n#!!block;n#trySubscribe#0;n#PushSubscriptionService#0" />
+                <element signature="n#!!block;n#tryUnsubscribe#0;n#PushSubscriptionService#0" />
               </folding>
             </state>
           </provider>
@@ -137,6 +69,7 @@
       <find>json</find>
       <find>manifest</find>
       <find>Notification</find>
+      <find>sw.json</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -149,12 +82,10 @@
         <option value="$PROJECT_DIR$/src/environments/environment.ts" />
         <option value="$PROJECT_DIR$/src/app/services/app-notification.service.ts" />
         <option value="$PROJECT_DIR$/src/app/models/push-subscription.ts" />
-        <option value="$PROJECT_DIR$/angular.json" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/service-worker/PushNotification.ts" />
         <option value="$PROJECT_DIR$/src/service-worker/sw.ts" />
         <option value="$PROJECT_DIR$/src/service-worker/tsconfig.json" />
-        <option value="$PROJECT_DIR$/build-sw.js" />
         <option value="$PROJECT_DIR$/src/tsconfig.spec.json" />
         <option value="$PROJECT_DIR$/src/tsconfig.sw.json" />
         <option value="$PROJECT_DIR$/src/app/components/team/home.component.html" />
@@ -165,11 +96,14 @@
         <option value="$PROJECT_DIR$/src/app/components/team/team.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/team.service.ts" />
         <option value="$PROJECT_DIR$/src/tsconfig.app.json" />
-        <option value="$PROJECT_DIR$/src/sw.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/push-subscription.service.ts" />
         <option value="$PROJECT_DIR$/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts" />
         <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.html" />
+        <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts" />
+        <option value="$PROJECT_DIR$/build-sw.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/angular.json" />
+        <option value="$PROJECT_DIR$/src/app/services/push-subscription.service.ts" />
+        <option value="$PROJECT_DIR$/src/sw.ts" />
       </list>
     </option>
   </component>
@@ -253,13 +187,6 @@
               <item name="ClientApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClientApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClientApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -284,13 +211,13 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/services" />
       <recent name="$PROJECT_DIR$/src/app/models" />
       <recent name="$PROJECT_DIR$/src/app/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -305,7 +232,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.npm run serve">
+  <component name="RunManager" selected="Compound.Run &amp; Debug">
     <configuration name="Run &amp; Debug" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
       <toRun type="JavascriptDebugType" name="Debug in browser" />
       <toRun type="js.build_tools.npm" name="npm run serve" />
@@ -343,12 +270,12 @@
       <workItem from="1530934690564" duration="5782000" />
       <workItem from="1531051840326" duration="4153000" />
       <workItem from="1531066034663" duration="7798000" />
-      <workItem from="1531090644184" duration="2953000" />
+      <workItem from="1531090644184" duration="5773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39504000" />
+    <option name="totallyTimeSpent" value="42324000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="0" width="1864" height="1080" extended-state="6" />
@@ -365,7 +292,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" sideWeight="0.5010526" side_tool="true" weight="0.1890277" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3831579" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.31263158" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -383,7 +310,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="27" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -403,6 +330,8 @@
           <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#trySubscribe#0;n#PushSubscriptionService#0" />
+            <element signature="n#!!block;n#tryUnsubscribe#0;n#PushSubscriptionService#0" />
           </folding>
         </state>
       </provider>
@@ -468,6 +397,8 @@
           <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#trySubscribe#0;n#PushSubscriptionService#0" />
+            <element signature="n#!!block;n#tryUnsubscribe#0;n#PushSubscriptionService#0" />
           </folding>
         </state>
       </provider>
@@ -499,6 +430,8 @@
           <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#trySubscribe#0;n#PushSubscriptionService#0" />
+            <element signature="n#!!block;n#tryUnsubscribe#0;n#PushSubscriptionService#0" />
           </folding>
         </state>
       </provider>
@@ -516,6 +449,8 @@
           <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#trySubscribe#0;n#PushSubscriptionService#0" />
+            <element signature="n#!!block;n#tryUnsubscribe#0;n#PushSubscriptionService#0" />
           </folding>
         </state>
       </provider>
@@ -524,13 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -544,7 +472,6 @@
     <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/futbol/ngsw.json" />
     <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -556,13 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7680">
           <caret line="329" column="2" selection-start-line="329" selection-start-column="2" selection-end-line="329" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angular.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="33" column="81" selection-start-line="33" selection-start-column="81" selection-end-line="33" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -617,13 +537,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service-worker/PushNotification.ts" />
-    <entry file="file://$PROJECT_DIR$/build-sw.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tsconfig.spec.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -692,23 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/models/push-subscription.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/push-subscription.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -726,27 +622,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/models/push-subscription.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/futbol/ngsw.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-sw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/push-subscription.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#trySubscribe#0;n#PushSubscriptionService#0" />
+            <element signature="n#!!block;n#tryUnsubscribe#0;n#PushSubscriptionService#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="334">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#!!block;n#enableNotifications#0;n#NavbarComponent#0" />
+            <element signature="n#!!block;n#disableNotifications#0;n#NavbarComponent#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sw.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="49" />
+        <state relative-caret-position="295">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>

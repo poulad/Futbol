@@ -33,7 +33,7 @@ sw.addEventListener('notificationclick', evt => {
         notif.close();
     }
 
-    const baseUrl = evt.target.location.href.replace(/sw.js$/, '');
+    const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
     evt.waitUntil(
         this.clients.openWindow(`${baseUrl}/teams/a`)
     );

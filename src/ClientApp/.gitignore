@@ -40,3 +40,4 @@ Thumbs.db
 
 # Build service worker
 src/sw.js
+src/ngsw.json

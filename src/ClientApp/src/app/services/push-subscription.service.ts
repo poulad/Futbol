@@ -21,6 +21,22 @@ export class PushSubscriptionService {
             .post('api/unsubscribe', subscription);
     }
 
+    async isSubscribed(): Promise<boolean> {
+        const sw = navigator['serviceWorker'] as ServiceWorkerContainer;
+        if (!(sw)) {
+            return false;
+        }
+
+        const swReg: ServiceWorkerRegistration = await sw.ready;
+        const pushManager: PushManager = swReg['pushManager'];
+        if (!pushManager) {
+            return false;
+        }
+
+        const subscription = await pushManager.getSubscription();
+        return !!subscription;
+    }
+
     async trySubscribe(): Promise<any> {
         if (!this._notificationService.isNotificationPermissionGranted()) {
             throw new Error('Notifications are not permitted.');

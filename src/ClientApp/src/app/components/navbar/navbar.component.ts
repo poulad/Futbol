@@ -7,7 +7,7 @@ import { PushSubscriptionService } from '../../services/push-subscription.servic
     templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
-    isNotificationGranted: boolean;
+    isSubscribedForNotifications: boolean;
     isChangingNotificationState = false;
     isMenuCollapsed = true;
 
@@ -18,8 +18,8 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isNotificationGranted = this._notifService
-            .isNotificationPermissionGranted();
+        this.checkForSubscription()
+            .catch(console.warn);
     }
 
     async enableNotifications() {
@@ -35,9 +35,9 @@ export class NavbarComponent implements OnInit {
 
         try {
             await this._pushSubService.trySubscribe();
-            this.isNotificationGranted = true;
+            this.isSubscribedForNotifications = true;
         } catch (e) {
-            this.isNotificationGranted = false;
+            this.isSubscribedForNotifications = false;
             console.warn(e);
         }
         this.isChangingNotificationState = false;
@@ -51,7 +51,21 @@ export class NavbarComponent implements OnInit {
         } catch (e) {
             console.warn(e);
         }
-        this.isNotificationGranted = false;
+        this.isSubscribedForNotifications = false;
+        this.isChangingNotificationState = false;
+    }
+
+    private async checkForSubscription() {
+        this.isChangingNotificationState = true;
+
+        const permissionGranted = this._notifService.isNotificationPermissionGranted();
+        if (!permissionGranted) {
+            this.isSubscribedForNotifications = false;
+            this.isChangingNotificationState = false;
+            return;
+        }
+
+        this.isSubscribedForNotifications = await this._pushSubService.isSubscribed();
         this.isChangingNotificationState = false;
     }
 }
