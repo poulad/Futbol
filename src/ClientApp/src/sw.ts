@@ -23,19 +23,6 @@ sw.addEventListener('push', evt => {
     );
 });
 
-function handleTeamsNotification(evt) {
-    const notif: Notification = evt.notification;
-    const action: string = notif['action'];
-    if (action && action.startsWith('TEAM:')) {
-
-    }
-
-    const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
-    evt.waitUntil(
-        this.clients.openWindow(`${baseUrl}/teams/brazil`)
-    );
-}
-
 sw.addEventListener('notificationclick', evt => {
     const notif: Notification = evt.notification;
     notif.close();
@@ -45,8 +32,8 @@ sw.addEventListener('notificationclick', evt => {
     if (notif.tag === 'TEAMS') {
         let url = `${baseUrl}/teams`;
 
-        if (action && action.startsWith('TEAM:')) {
-            const teamName = action.substr('TEAM:'.length).toLowerCase();
+        if (action && action.substring(0, 5) === 'TEAM:') {
+            const teamName = action.substr(5).toLowerCase();
             url += `/${teamName}`;
         }
 
