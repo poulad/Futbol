@@ -24,11 +24,15 @@ sw.addEventListener('push', evt => {
 });
 
 sw.addEventListener('notificationclick', evt => {
+    const toLog = JSON.stringify(evt);
+    console.warn('Clicked');
+    console.warn(toLog);
+
     const notif: Notification = evt.notification;
     notif.close();
+    const action: string = notif['action'];
     const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
 
-    const action: string = notif['action'];
     if (notif.tag === 'TEAMS') {
         let url = `${baseUrl}/teams`;
 
@@ -38,7 +42,7 @@ sw.addEventListener('notificationclick', evt => {
         }
 
         evt.waitUntil(
-            this.clients.openWindow(url)
+            this.clients.openWindow(url + `#e=${JSON.stringify(evt)}`)
         );
     }
 });

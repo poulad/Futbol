@@ -21,8 +21,8 @@
       <file leaf-file-name="sw.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sw.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+            <state relative-caret-position="439">
+              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -339,12 +339,12 @@
       <workItem from="1531090644184" duration="6496000" />
       <workItem from="1531098621190" duration="1364000" />
       <workItem from="1531612318221" duration="156000" />
-      <workItem from="1531612491024" duration="6064000" />
+      <workItem from="1531612491024" duration="7474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50631000" />
+    <option name="totallyTimeSpent" value="52041000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="0" width="1864" height="1080" extended-state="6" />
@@ -362,7 +362,7 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32947367" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5010526" side_tool="true" weight="0.1890277" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.42842105" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2505263" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -752,8 +752,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sw.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+        <state relative-caret-position="439">
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
         </state>
       </provider>
     </entry>
