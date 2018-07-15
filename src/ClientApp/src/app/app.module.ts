@@ -17,10 +17,12 @@ import { AppNotificationService } from './services/app-notification.service';
 import { PushSubscriptionService } from './services/push-subscription.service';
 import { TeamComponent } from './components/team/team.component';
 import { TeamService } from './services/team.service';
+import { ListTeamsComponent } from './components/list-teams/list-teams.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'teams/:teamCode', component: TeamComponent},
+    {path: 'teams', component: ListTeamsComponent},
+    {path: 'teams/:teamName', component: TeamComponent},
     {path: '**', component: NotFoundComponent},
 ];
 
@@ -31,6 +33,7 @@ const routes: Routes = [
         NavbarComponent,
         NotFoundComponent,
         WorldCupComponent,
+        ListTeamsComponent,
         TeamComponent,
     ],
     imports: [

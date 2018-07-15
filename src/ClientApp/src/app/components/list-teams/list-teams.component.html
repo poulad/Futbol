@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+
+        <ng-container *ngIf="state === 'loading'">
+            <div class="col-sm-12">
+                <div class="text-center h1">
+                    <i class="fa fa-futbol-o fa-spin text-primary"></i>
+                </div>
+                <div class="text-center h3">
+                    LOADING
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="state === 'loaded'">
+            <div class="col-md-2 m-2 p-2" *ngFor="let t of teams">
+                <a [routerLink]="['/teams', t.name.toLowerCase()]">
+                    <div class="card" style="width: 10rem;">
+                        <img class="card-img-top" [src]="t.crestUrl" [alt]="t.name">
+                        <div class="card-body">
+                            <p class="card-text text-center h5">{{ t.name }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="state === 'failed'">
+            <div class="col-sm-12">
+                <p class="text-center">
+                    <ngb-alert type="error">{{ error }}</ngb-alert>
+                </p>
+            </div>
+        </ng-container>
+
+
+    </div>
+</div>

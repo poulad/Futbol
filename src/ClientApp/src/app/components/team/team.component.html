@@ -1,6 +1,39 @@
-<div class="container">
-    <div *ngIf="team" class="jumbotron">
-        <img [src]="team.crestUrl" width="100" height="80" alt="Flag">
-        {{ team.name }}
+<div class="container" *ngIf="state === 'loading'">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="text-center h1">
+                <i class="fa fa-futbol-o fa-spin text-primary"></i>
+            </div>
+            <div class="text-center h3">
+                LOADING
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="state === 'loaded'">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="team.crestUrl" [alt]="team.name">
+                <div class="card-body">
+                    <p class="card-text text-center h5">{{ team.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="state === 'failed'">
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="text-center">
+                <ngb-alert type="error">{{ error }}</ngb-alert>
+            </p>
+        </div>
     </div>
 </div>
