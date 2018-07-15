@@ -24,6 +24,7 @@
                             "src/manifest.json",
                             "src/browserconfig.xml",
                             "src/sw.js",
+                            "src/ngsw-worker.js",
                             "src/ngsw.json"
                         ],
                         "styles": [

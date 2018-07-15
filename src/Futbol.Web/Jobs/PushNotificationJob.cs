@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -55,9 +55,9 @@ namespace Futbol.Web.Jobs
                 }
 
                 dynamic jsonObj = JsonConvert.DeserializeObject(sub.Data);
-                string pushEndpoint = (string) jsonObj.endpoint;
-                string p256Dh = (string) jsonObj.keys?.p256dh;
-                string auth = (string) jsonObj.keys?.auth;
+                string pushEndpoint = (string)jsonObj.endpoint;
+                string p256Dh = (string)jsonObj.keys?.p256dh;
+                string auth = (string)jsonObj.keys?.auth;
 
                 if (string.IsNullOrWhiteSpace(auth))
                 {
@@ -117,14 +117,13 @@ namespace Futbol.Web.Jobs
 
             string payload = JsonConvert.SerializeObject(new PushNotification
             {
-                Title = "World Cup Teams",
+                Title = "Teams",
                 Options = new PushNotificationOptions
                 {
-                    Body = "Checkout these teams in ⚽ WC 2018 ⚽",
-                    Icon = "favicon.ico",
+                    Body = "Checkout teams in the World Cup ⚽",
+                    Icon = "assets/images/wc.png",
                     Actions = actions,
                     Tag = "TEAMS",
-                    RequireInteraction = true,
                 }
             });
 

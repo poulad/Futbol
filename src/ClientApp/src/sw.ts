@@ -1,4 +1,5 @@
 const sw = <any>self;
+sw.importScripts('ngsw-worker.js');
 
 export interface PushNotification {
     title: string;
@@ -7,7 +8,6 @@ export interface PushNotification {
 
 sw.addEventListener('push', evt => {
     const pushNotif = evt.data.json();
-    console.log('Received push message: ' + JSON.stringify(pushNotif));
     if (!(pushNotif.title && pushNotif.options)) {
         console.warn('Unsupported notification received');
         evt.waitUntil(
@@ -24,13 +24,10 @@ sw.addEventListener('push', evt => {
 });
 
 sw.addEventListener('notificationclick', evt => {
-    const toLog = JSON.stringify(evt);
-    console.warn('Clicked');
-    console.warn(toLog);
+    evt.notification.close();
 
     const notif: Notification = evt.notification;
-    notif.close();
-    const action: string = notif['action'];
+    const action: string = evt.action;
     const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
 
     if (notif.tag === 'TEAMS') {
@@ -42,7 +39,7 @@ sw.addEventListener('notificationclick', evt => {
         }
 
         evt.waitUntil(
-            this.clients.openWindow(url + `#e=${JSON.stringify(evt)}`)
+            this.clients.openWindow(url)
         );
     }
 });

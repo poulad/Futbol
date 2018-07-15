@@ -40,11 +40,8 @@ function buildAngularApp() {
     $.cd(`${root}/src/ClientApp`);
     $.exec(`node node_modules/typescript/bin/tsc --project "${root}/src/ClientApp/src/tsconfig.sw.json" --outDir "${outputPath}"`);
 
-    console.debug('Combining service worker files...');
-    $.cat(`${outputPath}/ngsw-worker.js`, `${outputPath}/sw.js`).to(`${outputPath}/sw.js`);
-
     console.debug('Removing unused service worker files...');
-    $.rm(`${outputPath}/ngsw-worker.js`, `${outputPath}/safety-worker.js`);
+    $.rm(`${outputPath}/safety-worker.js`);
 }
 
 
