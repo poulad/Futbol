@@ -23,17 +23,37 @@ sw.addEventListener('push', evt => {
     );
 });
 
-sw.addEventListener('notificationclick', evt => {
+function handleTeamsNotification(evt) {
     const notif: Notification = evt.notification;
-    notif.close();
-    if (notif.tag === 'TEAMS') {
-        notif.close();
+    const action: string = notif['action'];
+    if (action && action.startsWith('TEAM:')) {
+
     }
 
     const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
     evt.waitUntil(
         this.clients.openWindow(`${baseUrl}/teams/brazil`)
     );
+}
+
+sw.addEventListener('notificationclick', evt => {
+    const notif: Notification = evt.notification;
+    notif.close();
+    const baseUrl = evt.target.location.href.replace(/\/sw.js$/, '');
+
+    const action: string = notif['action'];
+    if (notif.tag === 'TEAMS') {
+        let url = `${baseUrl}/teams`;
+
+        if (action && action.startsWith('TEAM:')) {
+            const teamName = action.substr('TEAM:'.length).toLowerCase();
+            url += `/${teamName}`;
+        }
+
+        evt.waitUntil(
+            this.clients.openWindow(url)
+        );
+    }
 });
 
 sw.addEventListener('install', e => {

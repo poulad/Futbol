@@ -111,7 +111,7 @@ namespace Futbol.Web.Jobs
                 {
                     Title = t.Name,
                     Icon = "assets/images/wc.png",
-                    Action = $"TEAM:{t.Code}"
+                    Action = $"TEAM:{t.Name}"
                 })
                 .ToArray();
 
