@@ -34,13 +34,13 @@ namespace Futbol.Web.Controllers
         public async Task<IActionResult> Post([FromBody] JObject body)
         {
             dynamic jsonObj = body;
-            string pushEndpoint = (string) jsonObj.endpoint;
-            string p256dh = (string) jsonObj.keys?.p256dh;
-            string auth = (string) jsonObj.keys?.auth;
+            string pushEndpoint = (string)jsonObj.endpoint;
+            string p256dh = (string)jsonObj.keys?.p256dh;
+            string auth = (string)jsonObj.keys?.auth;
 
             string payload = JsonConvert.SerializeObject(new PushNotification
             {
-                Title = "Nice! You are subscribed for push notifications.",
+                Title = "Nice! You are subscribed to push notifications.",
                 Options = new PushNotificationOptions
                 {
                     Icon = "favicon.ico",

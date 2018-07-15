@@ -28,7 +28,7 @@ namespace Futbol.Web.Controllers
         public async Task<IActionResult> Post([FromBody] JObject body)
         {
             dynamic jsonObj = body;
-            string pushEndpoint = (string) jsonObj.endpoint;
+            string pushEndpoint = (string)jsonObj.endpoint;
 
             if (string.IsNullOrWhiteSpace(pushEndpoint))
             {
@@ -36,7 +36,8 @@ namespace Futbol.Web.Controllers
             }
 
             var subscription = await _dbContext.PushSubscriptions.FromSql(
-                    @"SELECT * FROM ""PushSubscriptions"" WHERE ""Data""->'endpoint' IS NOT NULL"
+                    @"SELECT * FROM ""PushSubscriptions"" WHERE (""Data""->>'endpoint')::TEXT = {0}",
+                    pushEndpoint
                 )
                 .SingleOrDefaultAsync()
                 .ConfigureAwait(false);
