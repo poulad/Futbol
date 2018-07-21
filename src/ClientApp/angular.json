@@ -54,6 +54,26 @@
                             "vendorChunk": false,
                             "buildOptimizer": true,
                             "serviceWorker": true
+                        },
+                        "gh-pages": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.gh-pages.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "outputPath": "dist/futbol_gh-pages/",
+                            "baseHref": "/Futbol/"
                         }
                     }
                 },

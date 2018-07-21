@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,7 @@ import { PushSubscriptionService } from './services/push-subscription.service';
 import { TeamComponent } from './components/team/team.component';
 import { TeamService } from './services/team.service';
 import { ListTeamsComponent } from './components/list-teams/list-teams.component';
+import { BaseApiUrlInterceptor } from './http-interceptors/base-api-url.interceptor';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -45,6 +46,7 @@ const routes: Routes = [
         NgbModule.forRoot()
     ],
     providers: [
+        {provide: HTTP_INTERCEPTORS, multi: true, useValue: BaseApiUrlInterceptor},
         AppNotificationService,
         PushSubscriptionService,
         CompetitionService,

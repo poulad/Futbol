@@ -6,6 +6,7 @@
         "serve": "npm run build:prod && npm run build-sw && npm start",
         "build": "ng build",
         "build:prod": "npm run build -- --prod --extract-css",
+        "build:gh-pages": "npm run build -- --configuration gh-pages",
         "build-sw": "node build-sw.js",
         "serve:prod": "npm run build:prod && npm run build-sw && http-server ./dist/futbol",
         "test": "ng test",

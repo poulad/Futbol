@@ -48,6 +48,12 @@ function pushContainers() {
     $.exec(`docker-compose ${dcOptions} up -d`);
 }
 
+function publishGithubPages() {
+    $.cd(`${deployDir}/../src/ClientApp/`);
+    $.exec(`node build-gh-pages.js`);
+}
+
 verifySettings();
 tryReadAppSettings();
 pushContainers();
+publishGithubPages();
