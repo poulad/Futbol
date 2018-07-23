@@ -19,6 +19,7 @@ import { TeamComponent } from './components/team/team.component';
 import { TeamService } from './services/team.service';
 import { ListTeamsComponent } from './components/list-teams/list-teams.component';
 import { BaseApiUrlInterceptor } from './http-interceptors/base-api-url.interceptor';
+import { FootballDataInterceptor } from './http-interceptors/football-data.interceptor';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -46,7 +47,8 @@ const routes: Routes = [
         NgbModule.forRoot()
     ],
     providers: [
-        {provide: HTTP_INTERCEPTORS, multi: true, useValue: BaseApiUrlInterceptor},
+        {provide: HTTP_INTERCEPTORS, multi: true, useClass: FootballDataInterceptor},
+        {provide: HTTP_INTERCEPTORS, multi: true, useClass: BaseApiUrlInterceptor},
         AppNotificationService,
         PushSubscriptionService,
         CompetitionService,

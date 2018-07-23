@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { headers } from './request-headers';
 import { Team } from '../models/team';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -16,10 +15,7 @@ export class TeamService {
 
     getById(id: string) {
         return this._http
-            .get<Team>(
-                `https://api.football-data.org/v1/teams/${id}`,
-                {headers: headers}
-            );
+            .get<Team>(`https://api.football-data.org/v2/teams/${id}`);
     }
 
     getAll(): Observable<Team[]> {
@@ -28,10 +24,7 @@ export class TeamService {
         }
 
         return this._http
-            .get<any>(
-                'https://api.football-data.org/v1/competitions/467/teams',
-                {headers: headers}
-            )
+            .get<any>('https://api.football-data.org/v2/competitions/2000/teams')
             .pipe(
                 tap(resp => {
                     this._allTeamsResponse = resp;
@@ -43,16 +36,13 @@ export class TeamService {
     findTeamId(name: string): Observable<string> {
         return this.getAll()
             .pipe(
-                map(_ => {
-                    const url: string = this._allTeamsResponse
+                map(_ =>
+                    this._allTeamsResponse
                         .teams
                         .filter(t => t.name.toLowerCase() === name.toLowerCase())
                         [0]
-                        ._links
-                        .self
-                        .href;
-                    return url.substr(url.lastIndexOf('/') + 1);
-                })
+                        .id
+                )
             );
     }
 }

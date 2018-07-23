@@ -4,15 +4,14 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-export class BaseApiUrlInterceptor implements HttpInterceptor {
+export class FootballDataInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const baseUrl = environment.baseApiUrl;
         if (
-            baseUrl && baseUrl.length &&
-            req.url.startsWith('api/')
+            req.url.startsWith('https://api.football-data.org') &&
+            !req.headers.has('X-Auth-Token')
         ) {
             req = req.clone({
-                url: baseUrl + req.url
+                headers: req.headers.set('X-Auth-Token', environment.apiKey)
             });
         }
         return next.handle(req);

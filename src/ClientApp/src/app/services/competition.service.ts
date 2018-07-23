@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Competition } from '../models/competition';
-import { headers } from './request-headers';
 
 @Injectable()
 export class CompetitionService {
@@ -12,9 +11,6 @@ export class CompetitionService {
 
     getWorldCupCompetition() {
         return this._http
-            .get<Competition>(
-                'https://api.football-data.org/v1/competitions/467',
-                {headers: headers}
-            );
+            .get<Competition>('https://api.football-data.org/v2/competitions/2000');
     }
 }

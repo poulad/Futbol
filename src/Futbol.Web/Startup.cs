@@ -57,6 +57,8 @@ namespace Futbol.Web
                 app.UseHsts();
             }
 
+            app.UseCors(builder => { builder.AllowAnyOrigin(); });
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -74,18 +76,18 @@ namespace Futbol.Web
                 }
             });
 
-            app.UseHangfireServer();
-            app.ScheduleJobs();
+//            app.UseHangfireServer();
+//            app.ScheduleJobs();
 
-            try
-            {
-                app.InitializeDatabase();
-            }
-            catch (Exception e)
-            {
-                logger.LogError(e, "Failed to initialize database.");
-                throw;
-            }
+//            try
+//            {
+//                app.InitializeDatabase();
+//            }
+//            catch (Exception e)
+//            {
+//                logger.LogError(e, "Failed to initialize database.");
+//                throw;
+//            }
         }
     }
 }
