@@ -37,6 +37,7 @@ namespace Futbol.Web
             services.AddTransient<PushNotificationJob>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(config => { config.RootPath = NgSpaPathProduction; });
@@ -57,12 +58,18 @@ namespace Futbol.Web
                 app.UseHsts();
             }
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod());
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
             app.UseMvc();
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetPreflightMaxAge(TimeSpan.FromHours(5))
+            );
 
             app.UseSpa(spa =>
             {
