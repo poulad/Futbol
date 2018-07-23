@@ -56,4 +56,4 @@ function publishGithubPages() {
 verifySettings();
 tryReadAppSettings();
 pushContainers();
-publishGithubPages();
+// publishGithubPages();
