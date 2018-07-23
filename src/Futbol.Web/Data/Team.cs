@@ -11,14 +11,5 @@ namespace Futbol.Web.Data
 
         [Required]
         public string Name { get; set; }
-
-        [Required]
-        public string Code { get; set; }
-
-        public string ShortName { get; set; }
-
-        public string SquadMarketValue { get; set; }
-
-        public string CrestUrl { get; set; }
     }
 }

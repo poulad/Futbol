@@ -54,7 +54,7 @@ namespace Futbol.Web.Data
                 .ConfigureAwait(false);
 
             string[] teamsInDb = await _dbContext.Teams
-                .Select(t => t.Code.ToUpper())
+                .Select(t => t.Id)
                 .ToArrayAsync()
                 .ConfigureAwait(false);
 
@@ -62,7 +62,7 @@ namespace Futbol.Web.Data
 
             foreach (var team in teams)
             {
-                if (!newTeams.Contains(team.Code, StringComparer.OrdinalIgnoreCase))
+                if (!newTeams.Contains(team.Id, StringComparer.OrdinalIgnoreCase))
                     continue;
 
                 await _dbContext.Teams.AddAsync(team)
@@ -74,10 +74,10 @@ namespace Futbol.Web.Data
 
         private async Task<Team[]> GetTeamsAsync()
         {
-            var http = new HttpClient {BaseAddress = new Uri("https://api.football-data.org/v1/")};
+            var http = new HttpClient {BaseAddress = new Uri("https://api.football-data.org/v2/")};
             http.DefaultRequestHeaders.Add("X-Auth-Token", "53b8cdf71c054628a6a57be9a927178c");
 
-            var response = await http.GetAsync("competitions/467/teams")
+            var response = await http.GetAsync("competitions/2000/teams")
                 .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             string json = await response.Content.ReadAsStringAsync()
@@ -91,7 +91,7 @@ namespace Futbol.Web.Data
         private string[] FindTeamsToAddToDb(Team[] teamsFromApi, string[] fromDb)
         {
             return teamsFromApi
-                .Select(t => t.Code)
+                .Select(t => t.Id)
                 .Except(fromDb, StringComparer.OrdinalIgnoreCase)
                 .ToArray();
         }
