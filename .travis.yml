@@ -1,5 +1,8 @@
 dist: trusty
 sudo: required
+language: node_js
+node_js:
+  - "node"
 branches:
   except:
   - gh-pages
@@ -13,4 +16,4 @@ install:
   - cd deploy/ && npm install && cd ..
 script: >
   node deploy/build.js &&
-  node deploy/deploy.js
+  node deploy/deploy-heroku.js
