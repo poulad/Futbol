@@ -11,10 +11,6 @@ notifications:
 services:
   - docker
 
-env:
-  - HEROKU_DOCKER_USERNAME
-  - HEROKU_AUTH_TOKEN
-
 install:
   - docker pull microsoft/dotnet:2.1-sdk
   - cd deploy/ && npm install && cd ..
@@ -26,3 +22,8 @@ script: >
 deploy:
   provider: script
   script: node deploy/deploy-heroku.js
+
+  
+# env:
+#   - HEROKU_DOCKER_USERNAME
+#   - HEROKU_AUTH_TOKEN
