@@ -2,7 +2,7 @@ dist: trusty
 sudo: required
 language: node_js
 node_js:
-  - "node"
+  - node
 branches:
   except:
   - gh-pages
@@ -23,7 +23,7 @@ deploy:
   provider: script
   script: node deploy/deploy-heroku.js
 
-  
+
 # env:
 #   - HEROKU_DOCKER_USERNAME
 #   - HEROKU_AUTH_TOKEN
