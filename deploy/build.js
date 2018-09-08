@@ -4,7 +4,7 @@ require('./logging');
 
 $.config.fatal = true;
 const root = path.join(__dirname, '..');
-const distDir = root + '/dist';
+const distDir = path.join(root, 'dist');
 
 
 function clear() {
@@ -15,9 +15,6 @@ function clear() {
 
 function buildAspNetCoreApp() {
     console.info('Building ASP.NET Core app...');
-
-    console.debug('Pulling .NET Core SDK image...');
-    $.exec('docker pull "microsoft/dotnet:2.1-sdk"');
 
     console.debug('Publishing project...');
     $.exec(`
@@ -48,4 +45,4 @@ function buildAngularApp() {
 clear();
 buildAspNetCoreApp();
 buildAngularApp();
-console.info(`Build succeeded: "${distDir}/app"`);
+console.info(`Build succeeded: "${path.join(distDir, 'app')}"`);

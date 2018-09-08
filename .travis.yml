@@ -1,14 +1,16 @@
 dist: trusty
 sudo: required
+branches:
+  except:
+  - gh-pages
 notifications:
   email: false
 
 services:
   - docker
-install: >
-  cd deploy/ &&
-  npm install &&
-  cd ..
+install:
+  - docker pull microsoft/dotnet:2.1-sdk
+  - cd deploy/ && npm install && cd ..
 script: >
   node deploy/build.js &&
   node deploy/deploy.js
