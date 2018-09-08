@@ -57,7 +57,7 @@ function push() {
     // sudo docker login --username $HEROKU_DOCKER_USERNAME --password $HEROKU_AUTH_TOKEN registry.heroku.com
     // sudo docker tag myangularapp:latest registry.heroku.com/adam-myangularapp/web
     // if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST = "false" ] then sudo docker push registry.heroku.com/adam-myangularapp/web fi
-    $.cp(`${deployDir}/Heroku.Dockerfile`, ${distDir}/Dockerfile)
+    $.cp(`${deployDir}/Heroku.Dockerfile`, `${distDir}/Dockerfile`)
     $.exec(`docker build --tag futbol:latest "${distDir}"`)
 
     $.exec(`docker login --username $HEROKU_DOCKER_USERNAME --password $HEROKU_AUTH_TOKEN registry.heroku.com`)
