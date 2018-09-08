@@ -10,7 +10,8 @@ notifications:
   email: false
 services:
   - docker
-
+env:
+  HEROKU_APP: poulad-futbol
 install:
   - docker pull microsoft/dotnet:2.1-sdk
   - cd deploy/ && npm install && cd ..
@@ -22,8 +23,19 @@ script: >
 deploy:
   provider: script
   script: node deploy/deploy-heroku.js
+  on:
+    branch: master
 
 
 # env:
-#   - HEROKU_DOCKER_USERNAME
-#   - HEROKU_AUTH_TOKEN
+
+#   APP_SETTINGS_JSON: value for appsettings.Production.json
+#   APP_BASE_HREF: optional. base-href passed to angular app. defaults to "/Futbol/"
+
+### if deploying to Heroku:
+#   HEROKU_APP: name of app on heroku
+#   HEROKU_DOCKER_USERNAME: heroku user name (or email)
+#   HEROKU_AUTH_TOKEN: herorku OAuth token
+
+### if deploying using Docker Compose:
+#   DOCKER_SETTINGS_JSON: 

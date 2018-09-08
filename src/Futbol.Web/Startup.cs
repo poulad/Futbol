@@ -33,7 +33,7 @@ namespace Futbol.Web
                     options.UseNpgsql(connectionString)
                 );
 
-            services.AddHangfire(config => { config.UsePostgreSqlStorage(connectionString); });
+//            services.AddHangfire(config => { config.UsePostgreSqlStorage(connectionString); });
             services.AddTransient<PushNotificationJob>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -83,8 +83,8 @@ namespace Futbol.Web
                 }
             });
 
-            app.UseHangfireServer();
-            app.ScheduleJobs();
+//            app.UseHangfireServer();
+//            app.ScheduleJobs();
 
             try
             {

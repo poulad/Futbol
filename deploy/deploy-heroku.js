@@ -3,17 +3,18 @@ const path = require('path')
 require('./logging')
 
 $.config.fatal = true
-const deployDir = __dirname
-const distDir = path.join(deployDir, '/../dist')
+const deploy_dir = __dirname
+const dist_dir = path.join(deploy_dir, '/../dist')
+let heroku_app_name;
 
-function verifySettings() {
+
+function verify_settings() {
     console.info('Verifying settings...')
     const script = require('./verify-settings')
     try {
         script.verifyDistDirectory()
-        script.verifyDockerSettings()
+        heroku_app_name = script.verify_heroku_app()
         script.verifyDockerConnection()
-        script.verifyDockerCompose()
     } catch (e) {
         console.error('Settings are invalid!')
         console.error(e)
@@ -21,11 +22,11 @@ function verifySettings() {
     }
 }
 
-function tryReadAppSettings() {
+function read_app_settings() {
     console.info('Reading app settings...')
     const script = require('./verify-settings')
     try {
-        script.verifyAppSettings(`${distDir}/app/appsettings.Production.json`)
+        script.verifyAppSettings(`${dist_dir}/app/appsettings.Production.json`)
     } catch (e) {
         console.error('App settings are invalid!')
         console.error(e)
@@ -33,41 +34,53 @@ function tryReadAppSettings() {
     }
 }
 
-function pushContainers() {
-    console.info('Pushing Docker Compose containers...')
-    const dcOptions = `--file ${deployDir}/docker-compose.yml --project-name futbol`
+function build_docker_image() {
+    console.info('Building Docker image...')
 
-    console.debug('Removing previous containers...')
-    $.exec(`docker-compose ${dcOptions} rm -f`)
-
-    console.debug('Building containers...')
-    $.cp(`${deployDir}/Dockerfile`, distDir)
-    $.exec(`docker-compose ${dcOptions} build --force-rm --no-cache`)
-
-    console.debug('Pushing new containers...')
-    $.exec(`docker-compose ${dcOptions} up -d`)
+    $.cp(`${deploy_dir}/Heroku.Dockerfile`, `${dist_dir}/Dockerfile`)
+    $.exec(`docker build --tag app ${dist_dir}`)
 }
 
-function publishGithubPages() {
-    $.cd(`${deployDir}/../src/ClientApp/`)
-    $.exec(`node build-gh-pages.js`)
+function push_image_to_heroku() {
+    console.info('Pushing Docker image to Heroku...')
+
+    console.debug('connecting to Heroku Docker registry')
+    $.exec(`docker login --username "$HEROKU_DOCKER_USERNAME" --password "$HEROKU_AUTH_TOKEN" registry.heroku.com`)
+
+    console.debug('tagging the image...')
+    $.exec(`docker tag app:latest registry.heroku.com/${heroku_app_name}/web`)
+
+    console.debug('pushing the image...')
+    $.exec(`docker push registry.heroku.com/${heroku_app_name}/web`)
 }
 
-function push() {
-    // sudo docker login --username $HEROKU_DOCKER_USERNAME --password $HEROKU_AUTH_TOKEN registry.heroku.com
-    // sudo docker tag myangularapp:latest registry.heroku.com/adam-myangularapp/web
-    // if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST = "false" ] then sudo docker push registry.heroku.com/adam-myangularapp/web fi
-    $.cp(`${deployDir}/Heroku.Dockerfile`, `${distDir}/Dockerfile`)
-    $.exec(`docker build --tag futbol:latest "${distDir}"`)
+function release_heroku_app() {
+    console.info('Deploying the image to Heroku dyno...')
 
-    $.exec(`docker login --username $HEROKU_DOCKER_USERNAME --password $HEROKU_AUTH_TOKEN registry.heroku.com`)
-    $.exec(`docker tag futbol:latest registry.heroku.com/poulad-futbol/web`)
-    $.exec(`docker push registry.heroku.com/poulad-futbol/web`)
+    console.debug(`Getting docker image ID`)
+    const image_id = $.exec(`docker inspect app:latest --format={{.Id}}`).stdout.trim()
+
+    console.debug(`Upgrading to new release`)
+    const post_data = JSON.stringify({
+        updates: [{
+            type: 'web',
+            docker_image: image_id
+        }]
+    })
+    $.exec(
+        `curl -X PATCH "https://api.heroku.com/apps/${heroku_app_name}/formation" ` +
+        `-H "Authorization: Bearer $HEROKU_AUTH_TOKEN" ` +
+        `-H 'Content-Type: application/json' ` +
+        `-H 'Accept: application/vnd.heroku+json; version=3.docker-releases' ` +
+        `-d '${post_data}'`
+    )
 }
 
-push()
 
-// verifySettings()
-// tryReadAppSettings()
-// pushContainers()
-// publishGithubPages()
+verify_settings()
+read_app_settings()
+build_docker_image()
+push_image_to_heroku()
+release_heroku_app()
+
+console.info("App is deployed successfully")
