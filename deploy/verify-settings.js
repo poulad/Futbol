@@ -11,6 +11,15 @@ exports.verifyDistDirectory = function () {
     }
 }
 
+exports.verify_heroku_app = function () {
+    const app_name = process.env['HEROKU_APP'];
+    if (!(app_name && app_name.length)) {
+        throw `Heroku app name is not set.:\n` +
+            `\tHEROKU_APP='my-app'`;
+    }
+    return app_name;
+}
+
 exports.verifyDockerSettings = function () {
     const dockerSettingsValue = process.env['DOCKER_SETTINGS_JSON'];
     if (!(dockerSettingsValue && dockerSettingsValue.length)) {
